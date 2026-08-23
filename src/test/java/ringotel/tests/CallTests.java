@@ -36,101 +36,272 @@ public class CallTests {
                 );
 
         callerApp =
-                new ApplicationManager(browser);
+                new ApplicationManager(
+                        browser
+                );
 
         calleeApp =
-                new ApplicationManager(browser);
+                new ApplicationManager(
+                        browser
+                );
 
         callerApp.init();
+
         calleeApp.init();
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown(ITestResult result) {
+    public void tearDown(
+            ITestResult result
+    ) {
 
         if (!result.isSuccess()) {
 
             try {
-                callerApp.getUser().takeScreenShot();
+
+                callerApp
+                        .getUser()
+                        .takeScreenShot();
+
             } catch (Exception ignored) {
             }
 
             try {
-                calleeApp.getUser().takeScreenShot();
+
+                calleeApp
+                        .getUser()
+                        .takeScreenShot();
+
             } catch (Exception ignored) {
             }
         }
 
         if (callerApp != null) {
-            callerApp.stop();
+
+            try {
+
+                if (callerApp
+                        .getCall()
+                        .isCallOverlayVisible()) {
+
+                    callerApp
+                            .getCall()
+                            .endCall();
+                }
+
+            } catch (Exception ignored) {
+            }
         }
 
         if (calleeApp != null) {
-            calleeApp.stop();
+
+            try {
+
+                if (calleeApp
+                        .getCall()
+                        .isCallOverlayVisible()) {
+
+                    calleeApp
+                            .getCall()
+                            .endCall();
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        if (callerApp != null) {
+
+            try {
+
+                callerApp.stop();
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        if (calleeApp != null) {
+
+            try {
+
+                calleeApp.stop();
+
+            } catch (Exception ignored) {
+            }
         }
     }
 
     @Test
     public void user4321Calls1234AndHangUpAfter15Seconds() {
 
-        callerApp.getUser().login(user4321);
-        calleeApp.getUser().login(user1234);
+        callerApp
+                .getUser()
+                .login(
+                        user4321
+                );
 
-        callerApp.getCall().makeCallFromKeypad("1234");
+        calleeApp
+                .getUser()
+                .login(
+                        user1234
+                );
 
-        callerApp.getCall().waitForOutgoingCall();
-        calleeApp.getCall().waitForIncomingCall();
+        callerApp
+                .getCall()
+                .makeCallFromKeypad(
+                        "1234"
+                );
+
+        callerApp
+                .getCall()
+                .waitForOutgoingCall();
+
+        calleeApp
+                .getCall()
+                .waitForIncomingCall();
 
         Assert.assertTrue(
-                callerApp.getCall().isCallActive()
+                calleeApp
+                        .getCall()
+                        .isIncomingCallVisible(),
+                "Incoming call is not visible for 1234"
+        );
+
+        calleeApp
+                .getCall()
+                .answerIncomingCall();
+
+        callerApp
+                .getCall()
+                .waitForActiveCall();
+
+        calleeApp
+                .getCall()
+                .waitForActiveCall();
+
+        Assert.assertTrue(
+                callerApp
+                        .getCall()
+                        .isCallActive(),
+                "Call is not active for 4321"
         );
 
         Assert.assertTrue(
-                calleeApp.getCall().isCallActive()
+                calleeApp
+                        .getCall()
+                        .isCallActive(),
+                "Call is not active for 1234"
         );
 
-        callerApp.getCall().pause(15000);
+        callerApp
+                .getCall()
+                .pause(
+                        15000
+                );
 
-        callerApp.getCall().endCall();
+        callerApp
+                .getCall()
+                .endCall();
 
         Assert.assertTrue(
-                callerApp.getCall().waitUntilCallFinished()
+                callerApp
+                        .getCall()
+                        .waitUntilCallFinished(),
+                "Call overlay did not disappear for 4321"
         );
 
         Assert.assertTrue(
-                calleeApp.getCall().waitUntilCallFinished()
+                calleeApp
+                        .getCall()
+                        .waitUntilCallFinished(),
+                "Call overlay did not disappear for 1234"
         );
     }
 
     @Test
     public void user1234Calls4321AndHangUpAfter15Seconds() {
 
-        callerApp.getUser().login(user1234);
-        calleeApp.getUser().login(user4321);
+        callerApp
+                .getUser()
+                .login(
+                        user1234
+                );
 
-        callerApp.getCall().makeCallFromKeypad("4321");
+        calleeApp
+                .getUser()
+                .login(
+                        user4321
+                );
 
-        callerApp.getCall().waitForOutgoingCall();
-        calleeApp.getCall().waitForIncomingCall();
+        callerApp
+                .getCall()
+                .makeCallFromKeypad(
+                        "4321"
+                );
+
+        callerApp
+                .getCall()
+                .waitForOutgoingCall();
+
+        calleeApp
+                .getCall()
+                .waitForIncomingCall();
 
         Assert.assertTrue(
-                callerApp.getCall().isCallActive()
+                calleeApp
+                        .getCall()
+                        .isIncomingCallVisible(),
+                "Incoming call is not visible for 4321"
+        );
+
+        calleeApp
+                .getCall()
+                .answerIncomingCall();
+
+        callerApp
+                .getCall()
+                .waitForActiveCall();
+
+        calleeApp
+                .getCall()
+                .waitForActiveCall();
+
+        Assert.assertTrue(
+                callerApp
+                        .getCall()
+                        .isCallActive(),
+                "Call is not active for 1234"
         );
 
         Assert.assertTrue(
-                calleeApp.getCall().isCallActive()
+                calleeApp
+                        .getCall()
+                        .isCallActive(),
+                "Call is not active for 4321"
         );
 
-        callerApp.getCall().pause(15000);
+        callerApp
+                .getCall()
+                .pause(
+                        15000
+                );
 
-        callerApp.getCall().endCall();
+        callerApp
+                .getCall()
+                .endCall();
 
         Assert.assertTrue(
-                callerApp.getCall().waitUntilCallFinished()
+                callerApp
+                        .getCall()
+                        .waitUntilCallFinished(),
+                "Call overlay did not disappear for 1234"
         );
 
         Assert.assertTrue(
-                calleeApp.getCall().waitUntilCallFinished()
+                calleeApp
+                        .getCall()
+                        .waitUntilCallFinished(),
+                "Call overlay did not disappear for 4321"
         );
     }
 }

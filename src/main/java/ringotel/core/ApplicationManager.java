@@ -9,7 +9,9 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import ringotel.fw.CallHelper;
+import ringotel.fw.ChatHelper;
 import ringotel.fw.ContactHelper;
+import ringotel.fw.PresenceHelper;
 import ringotel.fw.UserHelper;
 
 import java.time.Duration;
@@ -25,6 +27,8 @@ public class ApplicationManager {
     private UserHelper user;
     private ContactHelper contact;
     private CallHelper call;
+    private ChatHelper chat;
+    private PresenceHelper presence;
 
     private static final String BASE_URL =
             "https://app.shell.ringotel.co/login";
@@ -140,8 +144,7 @@ public class ApplicationManager {
         } else {
 
             throw new IllegalArgumentException(
-                    "Unknown browser: "
-                            + browser
+                    "Unknown browser: " + browser
             );
         }
 
@@ -157,14 +160,11 @@ public class ApplicationManager {
 
         driver.get(BASE_URL);
 
-        user =
-                new UserHelper(driver);
-
-        contact =
-                new ContactHelper(driver);
-
-        call =
-                new CallHelper(driver);
+        user = new UserHelper(driver);
+        contact = new ContactHelper(driver);
+        call = new CallHelper(driver);
+        chat = new ChatHelper(driver);
+        presence = new PresenceHelper(driver);
     }
 
     public void stop() {
@@ -187,6 +187,14 @@ public class ApplicationManager {
 
     public CallHelper getCall() {
         return call;
+    }
+
+    public ChatHelper getChat() {
+        return chat;
+    }
+
+    public PresenceHelper getPresence() {
+        return presence;
     }
 
     public WebDriver getDriver() {
