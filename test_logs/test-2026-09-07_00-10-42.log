@@ -1,0 +1,23 @@
+2026-09-07 00:10:44.785 INFO  ringotel.tests.CallControlsTests - Logging in 4321
+2026-09-07 00:10:47.646 INFO  ringotel.tests.CallControlsTests - Logging in 1234
+2026-09-07 00:10:50.471 INFO  ringotel.tests.CallControlsTests - 4321 calls 1234
+2026-09-07 00:10:52.827 INFO  ringotel.tests.CallControlsTests - Outgoing call detected for 4321
+2026-09-07 00:10:55.896 INFO  ringotel.tests.CallControlsTests - Incoming call detected for 1234
+2026-09-07 00:10:56.920 INFO  ringotel.tests.CallControlsTests - 1234 answers the call
+2026-09-07 00:11:00.159 INFO  ringotel.tests.CallControlsTests - Call is active for both users
+2026-09-07 00:11:01.190 INFO  ringotel.tests.CallControlsTests - Checking Hold
+2026-09-07 00:11:01.323 ERROR ringotel.tests.CallControlsTests - Caller screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788732661322.png
+2026-09-07 00:11:01.393 ERROR ringotel.tests.CallControlsTests - Callee screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788732661393.png
+2026-09-07 00:11:01.401 INFO  ringotel.tests.CallControlsTests - Finishing remaining caller call
+2026-09-07 00:11:01.965 INFO  ringotel.tests.CallControlsTests - Finishing remaining callee call
+2026-09-07 00:11:04.285 INFO  ringotel.tests.CallControlsTests - Logging in 4321
+2026-09-07 00:11:07.105 INFO  ringotel.tests.CallControlsTests - Logging in 1234
+2026-09-07 00:11:09.905 INFO  ringotel.tests.CallControlsTests - 4321 calls 1234
+2026-09-07 00:11:12.209 INFO  ringotel.tests.CallControlsTests - Outgoing call detected for 4321
+2026-09-07 00:11:14.775 INFO  ringotel.tests.CallControlsTests - Incoming call detected for 1234
+2026-09-07 00:11:15.787 INFO  ringotel.tests.CallControlsTests - 1234 rejects the call
+2026-09-07 00:11:15.829 INFO  ringotel.tests.CallControlsTests - Incoming call was successfully rejected by 1234
+2026-09-07 00:11:18.838 INFO  ringotel.tests.CallControlsTests - Call is still visible for 4321 after Reject, possibly because it continued to voicemail
+2026-09-07 00:11:18.838 INFO  ringotel.tests.CallControlsTests - Ending remaining call for 4321
+2026-09-07 00:11:18.879 INFO  ringotel.tests.CallControlsTests - Remaining call for 4321 was finished
+2026-09-07 00:11:18.879 INFO  ringotel.tests.CallControlsTests - Reject incoming call scenario completed successfully

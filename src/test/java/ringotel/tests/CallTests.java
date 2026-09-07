@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ringotel.core.ApplicationManager;
+import ringotel.core.TestData;
 import ringotel.model.User;
 
 public class CallTests {
@@ -14,17 +15,11 @@ public class CallTests {
     private ApplicationManager callerApp;
     private ApplicationManager calleeApp;
 
-    private final User user4321 =
-            new User()
-                    .setDomain("testwebsoftphone")
-                    .setUsername("4321")
-                    .setPassword("obFxbmYKYy9pwjAD");
+    private final User user1 =
+            TestData.getUser1();
 
-    private final User user1234 =
-            new User()
-                    .setDomain("testwebsoftphone")
-                    .setUsername("1234")
-                    .setPassword("R0eE6jAMUmyck7uD");
+    private final User user2 =
+            TestData.getUser2();
 
     @BeforeMethod
     public void setUp() {
@@ -46,7 +41,6 @@ public class CallTests {
                 );
 
         callerApp.init();
-
         calleeApp.init();
     }
 
@@ -134,22 +128,28 @@ public class CallTests {
     @Test
     public void user4321Calls1234AndHangUpAfter15Seconds() {
 
+        String callerExtension =
+                user1.getUsername();
+
+        String calleeExtension =
+                user2.getUsername();
+
         callerApp
                 .getUser()
                 .login(
-                        user4321
+                        user1
                 );
 
         calleeApp
                 .getUser()
                 .login(
-                        user1234
+                        user2
                 );
 
         callerApp
                 .getCall()
                 .makeCallFromKeypad(
-                        "1234"
+                        calleeExtension
                 );
 
         callerApp
@@ -164,7 +164,8 @@ public class CallTests {
                 calleeApp
                         .getCall()
                         .isIncomingCallVisible(),
-                "Incoming call is not visible for 1234"
+                "Incoming call is not visible for "
+                        + calleeExtension
         );
 
         calleeApp
@@ -183,14 +184,16 @@ public class CallTests {
                 callerApp
                         .getCall()
                         .isCallActive(),
-                "Call is not active for 4321"
+                "Call is not active for "
+                        + callerExtension
         );
 
         Assert.assertTrue(
                 calleeApp
                         .getCall()
                         .isCallActive(),
-                "Call is not active for 1234"
+                "Call is not active for "
+                        + calleeExtension
         );
 
         callerApp
@@ -207,36 +210,44 @@ public class CallTests {
                 callerApp
                         .getCall()
                         .waitUntilCallFinished(),
-                "Call overlay did not disappear for 4321"
+                "Call overlay did not disappear for "
+                        + callerExtension
         );
 
         Assert.assertTrue(
                 calleeApp
                         .getCall()
                         .waitUntilCallFinished(),
-                "Call overlay did not disappear for 1234"
+                "Call overlay did not disappear for "
+                        + calleeExtension
         );
     }
 
     @Test
     public void user1234Calls4321AndHangUpAfter15Seconds() {
 
+        String callerExtension =
+                user2.getUsername();
+
+        String calleeExtension =
+                user1.getUsername();
+
         callerApp
                 .getUser()
                 .login(
-                        user1234
+                        user2
                 );
 
         calleeApp
                 .getUser()
                 .login(
-                        user4321
+                        user1
                 );
 
         callerApp
                 .getCall()
                 .makeCallFromKeypad(
-                        "4321"
+                        calleeExtension
                 );
 
         callerApp
@@ -251,7 +262,8 @@ public class CallTests {
                 calleeApp
                         .getCall()
                         .isIncomingCallVisible(),
-                "Incoming call is not visible for 4321"
+                "Incoming call is not visible for "
+                        + calleeExtension
         );
 
         calleeApp
@@ -270,14 +282,16 @@ public class CallTests {
                 callerApp
                         .getCall()
                         .isCallActive(),
-                "Call is not active for 1234"
+                "Call is not active for "
+                        + callerExtension
         );
 
         Assert.assertTrue(
                 calleeApp
                         .getCall()
                         .isCallActive(),
-                "Call is not active for 4321"
+                "Call is not active for "
+                        + calleeExtension
         );
 
         callerApp
@@ -294,14 +308,16 @@ public class CallTests {
                 callerApp
                         .getCall()
                         .waitUntilCallFinished(),
-                "Call overlay did not disappear for 1234"
+                "Call overlay did not disappear for "
+                        + callerExtension
         );
 
         Assert.assertTrue(
                 calleeApp
                         .getCall()
                         .waitUntilCallFinished(),
-                "Call overlay did not disappear for 4321"
+                "Call overlay did not disappear for "
+                        + calleeExtension
         );
     }
 }

@@ -1,0 +1,8 @@
+2026-09-06 23:56:51.188 INFO  ringotel.tests.CallControlsTests - 4321 calls 1234
+2026-09-06 23:56:57.047 INFO  ringotel.tests.CallControlsTests - 1234 answers the call
+2026-09-06 23:57:01.657 INFO  ringotel.tests.CallControlsTests - Checking Hold
+2026-09-06 23:57:17.270 ERROR ringotel.tests.CallControlsTests - Caller screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788731837267.png
+2026-09-06 23:57:17.335 ERROR ringotel.tests.CallControlsTests - Callee screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788731837335.png
+2026-09-06 23:57:25.267 INFO  ringotel.tests.CallControlsTests - 4321 calls 1234
+2026-09-06 23:57:31.120 INFO  ringotel.tests.CallControlsTests - 1234 rejects the call
+2026-09-06 23:57:31.160 INFO  ringotel.tests.CallControlsTests - Incoming call was successfully rejected by 1234

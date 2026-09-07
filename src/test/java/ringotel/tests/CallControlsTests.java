@@ -9,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ringotel.core.ApplicationManager;
+import ringotel.core.TestData;
 import ringotel.model.User;
 
 public class CallControlsTests {
@@ -21,17 +22,11 @@ public class CallControlsTests {
     private ApplicationManager callerApp;
     private ApplicationManager calleeApp;
 
-    private final User user4321 =
-            new User()
-                    .setDomain("testwebsoftphone")
-                    .setUsername("4321")
-                    .setPassword("obFxbmYKYy9pwjAD");
+    private final User user1 =
+            TestData.getUser1();
 
-    private final User user1234 =
-            new User()
-                    .setDomain("testwebsoftphone")
-                    .setUsername("1234")
-                    .setPassword("R0eE6jAMUmyck7uD");
+    private final User user2 =
+            TestData.getUser2();
 
     @BeforeMethod
     public void setUp() {
@@ -160,34 +155,44 @@ public class CallControlsTests {
     @Test
     public void answerCallAndCheckCallControls() {
 
+        String callerExtension =
+                user1.getUsername();
+
+        String calleeExtension =
+                user2.getUsername();
+
         logger.info(
-                "Logging in 4321"
+                "Logging in {}",
+                callerExtension
         );
 
         callerApp
                 .getUser()
                 .login(
-                        user4321
+                        user1
                 );
 
         logger.info(
-                "Logging in 1234"
+                "Logging in {}",
+                calleeExtension
         );
 
         calleeApp
                 .getUser()
                 .login(
-                        user1234
+                        user2
                 );
 
         logger.info(
-                "4321 calls 1234"
+                "{} calls {}",
+                callerExtension,
+                calleeExtension
         );
 
         callerApp
                 .getCall()
                 .makeCallFromKeypad(
-                        "1234"
+                        calleeExtension
                 );
 
         callerApp
@@ -195,7 +200,8 @@ public class CallControlsTests {
                 .waitForOutgoingCall();
 
         logger.info(
-                "Outgoing call detected for 4321"
+                "Outgoing call detected for {}",
+                callerExtension
         );
 
         calleeApp
@@ -203,14 +209,16 @@ public class CallControlsTests {
                 .waitForIncomingCall();
 
         logger.info(
-                "Incoming call detected for 1234"
+                "Incoming call detected for {}",
+                calleeExtension
         );
 
         Assert.assertTrue(
                 calleeApp
                         .getCall()
                         .isIncomingCallVisible(),
-                "Incoming call is not visible for 1234"
+                "Incoming call is not visible for "
+                        + calleeExtension
         );
 
         calleeApp
@@ -220,7 +228,8 @@ public class CallControlsTests {
                 );
 
         logger.info(
-                "1234 answers the call"
+                "{} answers the call",
+                calleeExtension
         );
 
         calleeApp
@@ -236,21 +245,25 @@ public class CallControlsTests {
                 .waitForActiveCall();
 
         logger.info(
-                "Call is active for both users"
+                "Call is active for {} and {}",
+                callerExtension,
+                calleeExtension
         );
 
         Assert.assertTrue(
                 callerApp
                         .getCall()
                         .isCallActive(),
-                "Call is not active for 4321"
+                "Call is not active for "
+                        + callerExtension
         );
 
         Assert.assertTrue(
                 calleeApp
                         .getCall()
                         .isCallActive(),
-                "Call is not active for 1234"
+                "Call is not active for "
+                        + calleeExtension
         );
 
         Assert.assertTrue(
@@ -555,14 +568,16 @@ public class CallControlsTests {
                 callerApp
                         .getCall()
                         .waitUntilCallFinished(),
-                "Call overlay did not disappear for 4321"
+                "Call overlay did not disappear for "
+                        + callerExtension
         );
 
         Assert.assertTrue(
                 calleeApp
                         .getCall()
                         .waitUntilCallFinished(),
-                "Call overlay did not disappear for 1234"
+                "Call overlay did not disappear for "
+                        + calleeExtension
         );
 
         logger.info(
@@ -573,34 +588,44 @@ public class CallControlsTests {
     @Test
     public void rejectIncomingCall() {
 
+        String callerExtension =
+                user1.getUsername();
+
+        String calleeExtension =
+                user2.getUsername();
+
         logger.info(
-                "Logging in 4321"
+                "Logging in {}",
+                callerExtension
         );
 
         callerApp
                 .getUser()
                 .login(
-                        user4321
+                        user1
                 );
 
         logger.info(
-                "Logging in 1234"
+                "Logging in {}",
+                calleeExtension
         );
 
         calleeApp
                 .getUser()
                 .login(
-                        user1234
+                        user2
                 );
 
         logger.info(
-                "4321 calls 1234"
+                "{} calls {}",
+                callerExtension,
+                calleeExtension
         );
 
         callerApp
                 .getCall()
                 .makeCallFromKeypad(
-                        "1234"
+                        calleeExtension
                 );
 
         callerApp
@@ -608,7 +633,8 @@ public class CallControlsTests {
                 .waitForOutgoingCall();
 
         logger.info(
-                "Outgoing call detected for 4321"
+                "Outgoing call detected for {}",
+                callerExtension
         );
 
         calleeApp
@@ -616,14 +642,16 @@ public class CallControlsTests {
                 .waitForIncomingCall();
 
         logger.info(
-                "Incoming call detected for 1234"
+                "Incoming call detected for {}",
+                calleeExtension
         );
 
         Assert.assertTrue(
                 calleeApp
                         .getCall()
                         .isIncomingCallVisible(),
-                "Incoming call is not visible for 1234"
+                "Incoming call is not visible for "
+                        + calleeExtension
         );
 
         calleeApp
@@ -633,7 +661,8 @@ public class CallControlsTests {
                 );
 
         logger.info(
-                "1234 rejects the call"
+                "{} rejects the call",
+                calleeExtension
         );
 
         calleeApp
@@ -644,11 +673,14 @@ public class CallControlsTests {
                 calleeApp
                         .getCall()
                         .isIncomingCallVisible(),
-                "Incoming call remained visible for 1234 after Reject"
+                "Incoming call remained visible for "
+                        + calleeExtension
+                        + " after Reject"
         );
 
         logger.info(
-                "Incoming call was successfully rejected by 1234"
+                "Incoming call was successfully rejected by {}",
+                calleeExtension
         );
 
         callerApp
@@ -662,11 +694,13 @@ public class CallControlsTests {
                 .isCallOverlayVisible()) {
 
             logger.info(
-                    "Call is still visible for 4321 after Reject, possibly because it continued to voicemail"
+                    "Call is still visible for {} after Reject, possibly because it continued to voicemail",
+                    callerExtension
             );
 
             logger.info(
-                    "Ending remaining call for 4321"
+                    "Ending remaining call for {}",
+                    callerExtension
             );
 
             callerApp
@@ -677,17 +711,20 @@ public class CallControlsTests {
                     callerApp
                             .getCall()
                             .waitUntilCallFinished(),
-                    "Remaining call could not be finished for 4321"
+                    "Remaining call could not be finished for "
+                            + callerExtension
             );
 
             logger.info(
-                    "Remaining call for 4321 was finished"
+                    "Remaining call for {} was finished",
+                    callerExtension
             );
 
         } else {
 
             logger.info(
-                    "Call finished automatically for 4321 after Reject"
+                    "Call finished automatically for {} after Reject",
+                    callerExtension
             );
         }
 
