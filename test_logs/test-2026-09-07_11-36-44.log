@@ -1,0 +1,4 @@
+2026-09-07 11:36:44.262 INFO  ringotel.tests.PresenceTests - Start test changePresenceStatuses with data: []
+2026-09-07 11:36:54.390 INFO  ringotel.tests.PresenceTests - PASSED: changePresenceStatuses
+2026-09-07 11:36:54.514 INFO  ringotel.tests.PresenceTests - Stop test
+2026-09-07 11:36:54.514 INFO  ringotel.tests.PresenceTests - ******************************

@@ -1,0 +1,9 @@
+2026-09-07 11:30:22.225 INFO  ringotel.tests.ChatTests - Start test checkMessagingForImportedContact with data: []
+2026-09-07 11:30:32.579 WARN  ringotel.tests.ChatTests - Messaging is not available for contact 'test1import1'. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788773432576.png
+2026-09-07 11:30:32.581 INFO  ringotel.tests.ChatTests - PASSED: checkMessagingForImportedContact
+2026-09-07 11:30:32.726 INFO  ringotel.tests.ChatTests - Stop test
+2026-09-07 11:30:32.727 INFO  ringotel.tests.ChatTests - ******************************
+2026-09-07 11:30:32.730 INFO  ringotel.tests.ChatTests - Start test sendMessageToTzipyBohemFromContacts with data: []
+2026-09-07 11:30:37.963 INFO  ringotel.tests.ChatTests - PASSED: sendMessageToTzipyBohemFromContacts
+2026-09-07 11:30:38.094 INFO  ringotel.tests.ChatTests - Stop test
+2026-09-07 11:30:38.094 INFO  ringotel.tests.ChatTests - ******************************

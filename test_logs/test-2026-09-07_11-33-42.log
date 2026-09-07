@@ -1,0 +1,159 @@
+2026-09-07 11:33:42.190 INFO  ringotel.tests.ContactMessagingAuditTests - Start test checkMessagingAvailabilityForAllContacts with data: []
+2026-09-07 11:33:48.371 INFO  ringotel.tests.ContactMessagingAuditTests - Contacts found for messaging audit: 54
+2026-09-07 11:33:48.371 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'testcontact', occurrence 1
+2026-09-07 11:33:49.283 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'testcontact'
+2026-09-07 11:33:50.645 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'testcontact' was deleted. Chat id: 1788773630532-c586da802598610209
+2026-09-07 11:33:50.645 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Ð¢ÐµÑÑ231', occurrence 1
+2026-09-07 11:33:51.644 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Ð¢ÐµÑÑ231'
+2026-09-07 11:33:52.976 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Ð¢ÐµÑÑ231' was deleted. Chat id: 1788773632897-40735818bd55244ee9
+2026-09-07 11:33:52.976 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Александр Перевозка Генератора', occurrence 1
+2026-09-07 11:33:56.035 WARN  ringotel.tests.ContactMessagingAuditTests - Messaging is not available for contact 'Александр Перевозка Генератора'. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788773636034.png
+2026-09-07 11:33:56.035 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Александра', occurrence 1
+2026-09-07 11:33:59.114 WARN  ringotel.tests.ContactMessagingAuditTests - Messaging is not available for contact 'Александра'. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788773639113.png
+2026-09-07 11:33:59.114 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Алессио', occurrence 1
+2026-09-07 11:34:02.193 WARN  ringotel.tests.ContactMessagingAuditTests - Messaging is not available for contact 'Алессио'. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788773642193.png
+2026-09-07 11:34:02.194 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Андрю', occurrence 1
+2026-09-07 11:34:03.218 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Андрю'
+2026-09-07 11:34:04.553 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Андрю' was deleted. Chat id: 1788773644470-791a1ae50d39ac555b
+2026-09-07 11:34:04.553 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Анна Чежеумова', occurrence 1
+2026-09-07 11:34:07.639 WARN  ringotel.tests.ContactMessagingAuditTests - Messaging is not available for contact 'Анна Чежеумова'. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788773647638.png
+2026-09-07 11:34:07.639 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Микаель', occurrence 1
+2026-09-07 11:34:08.700 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Микаель'
+2026-09-07 11:34:10.032 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Микаель' was deleted. Chat id: 1788773649952-904bb7012c886586a3
+2026-09-07 11:34:10.032 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Ник', occurrence 1
+2026-09-07 11:34:11.094 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Ник'
+2026-09-07 11:34:12.439 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Ник' was deleted. Chat id: 1788773652349-c60fb31631fb526870
+2026-09-07 11:34:12.439 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'тест є-лінка', occurrence 1
+2026-09-07 11:34:13.513 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'тест є-лінка'
+2026-09-07 11:34:14.829 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'тест є-лінка' was deleted. Chat id: 1788773654768-e3bdc1e38bfa3f5fbd
+2026-09-07 11:34:14.829 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Чипзона', occurrence 1
+2026-09-07 11:34:17.972 WARN  ringotel.tests.ContactMessagingAuditTests - Messaging is not available for contact 'Чипзона'. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788773657971.png
+2026-09-07 11:34:17.972 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'aaa-test,,,test', occurrence 1
+2026-09-07 11:34:19.079 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'aaa-test,,,test'
+2026-09-07 11:34:20.409 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'aaa-test,,,test' was deleted. Chat id: 1788773660331-d560c3ee560f60f61c
+2026-09-07 11:34:20.409 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Adrian Johnson', occurrence 1
+2026-09-07 11:34:23.582 WARN  ringotel.tests.ContactMessagingAuditTests - Messaging is not available for contact 'Adrian Johnson'. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788773663581.png
+2026-09-07 11:34:23.582 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Alli', occurrence 1
+2026-09-07 11:34:24.710 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Alli'
+2026-09-07 11:34:26.048 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Alli' was deleted. Chat id: 1788773665963-ffc55c78b9a03c3d21
+2026-09-07 11:34:26.048 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Anatolii Kamorda', occurrence 1
+2026-09-07 11:34:29.240 WARN  ringotel.tests.ContactMessagingAuditTests - Messaging is not available for contact 'Anatolii Kamorda'. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788773669239.png
+2026-09-07 11:34:29.240 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Bethy Guttman', occurrence 1
+2026-09-07 11:34:30.394 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Bethy Guttman'
+2026-09-07 11:34:31.728 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Bethy Guttman' was deleted. Chat id: 1788773671646-1a5c15828d58f39322
+2026-09-07 11:34:31.728 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Chana Retter', occurrence 1
+2026-09-07 11:34:32.863 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Chana Retter'
+2026-09-07 11:34:34.185 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Chana Retter' was deleted. Chat id: 1788773674115-444c5d8d8f317956f9
+2026-09-07 11:34:34.185 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Chaya Monderer', occurrence 1
+2026-09-07 11:34:35.334 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Chaya Monderer'
+2026-09-07 11:34:36.647 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Chaya Monderer' was deleted. Chat id: 1788773676586-4d3164aafacd3401e4
+2026-09-07 11:34:36.647 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Devora Adler', occurrence 1
+2026-09-07 11:34:37.784 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Devora Adler'
+2026-09-07 11:34:39.102 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Devora Adler' was deleted. Chat id: 1788773679036-6142345a9b75c77f67
+2026-09-07 11:34:39.102 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Devory Rayman', occurrence 1
+2026-09-07 11:34:40.317 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Devory Rayman'
+2026-09-07 11:34:41.637 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Devory Rayman' was deleted. Chat id: 1788773681570-5478aea3d03d14b30a
+2026-09-07 11:34:41.637 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Dispatcher - Dubie Heyman', occurrence 1
+2026-09-07 11:34:42.825 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Dispatcher - Dubie Heyman'
+2026-09-07 11:34:44.142 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Dispatcher - Dubie Heyman' was deleted. Chat id: 1788773684079-1ac39193221399d5c5
+2026-09-07 11:34:44.142 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Dispatcher - Eli Dinermann', occurrence 1
+2026-09-07 11:34:45.324 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Dispatcher - Eli Dinermann'
+2026-09-07 11:34:46.661 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Dispatcher - Eli Dinermann' was deleted. Chat id: 1788773686579-a81f1593a1ce0c13f2
+2026-09-07 11:34:46.661 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Dispatcher - Elimelech Goldstein', occurrence 1
+2026-09-07 11:34:47.859 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Dispatcher - Elimelech Goldstein'
+2026-09-07 11:34:49.192 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Dispatcher - Elimelech Goldstein' was deleted. Chat id: 1788773689113-dd8fcbfcb9ce16821c
+2026-09-07 11:34:49.192 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Dispatcher - Tzvi Pancer', occurrence 1
+2026-09-07 11:34:50.399 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Dispatcher - Tzvi Pancer'
+2026-09-07 11:34:51.720 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Dispatcher - Tzvi Pancer' was deleted. Chat id: 1788773691654-740b07d8c592b6d291
+2026-09-07 11:34:51.720 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Dubie Heyman', occurrence 1
+2026-09-07 11:34:52.931 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Dubie Heyman'
+2026-09-07 11:34:54.273 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Dubie Heyman' was deleted. Chat id: 1788773694183-244866f53f63a8fb4c
+2026-09-07 11:34:54.273 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Hatzalah Offf', occurrence 1
+2026-09-07 11:34:55.511 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Hatzalah Offf'
+2026-09-07 11:34:56.832 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Hatzalah Offf' was deleted. Chat id: 1788773696777-b430d065740d89a738
+2026-09-07 11:34:56.832 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Johnston', occurrence 1
+2026-09-07 11:34:58.057 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Johnston'
+2026-09-07 11:34:59.375 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Johnston' was deleted. Chat id: 1788773699309-d8a6c3d9bc391271df
+2026-09-07 11:34:59.375 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Leah Horowitz', occurrence 1
+2026-09-07 11:35:00.623 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Leah Horowitz'
+2026-09-07 11:35:01.957 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Leah Horowitz' was deleted. Chat id: 1788773701876-a4a84e6414f2fc0374
+2026-09-07 11:35:01.957 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Leah Pinck', occurrence 1
+2026-09-07 11:35:03.195 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Leah Pinck'
+2026-09-07 11:35:04.519 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Leah Pinck' was deleted. Chat id: 1788773704738-14551b2357e36d3e9d
+2026-09-07 11:35:04.519 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Lieba Tesser', occurrence 1
+2026-09-07 11:35:05.775 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Lieba Tesser'
+2026-09-07 11:35:07.095 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Lieba Tesser' was deleted. Chat id: 1788773707054-d059c92a3e85a2dec2
+2026-09-07 11:35:07.095 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Manny Topper', occurrence 1
+2026-09-07 11:35:08.370 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Manny Topper'
+2026-09-07 11:35:09.687 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Manny Topper' was deleted. Chat id: 1788773709629-38766bc779b9c1068e
+2026-09-07 11:35:09.687 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'max', occurrence 1
+2026-09-07 11:35:10.957 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'max'
+2026-09-07 11:35:12.286 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'max' was deleted. Chat id: 1788773712208-ecb2313e121fe87931
+2026-09-07 11:35:12.286 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'MedDir - Elimelech Goldstein', occurrence 1
+2026-09-07 11:35:13.596 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'MedDir - Elimelech Goldstein'
+2026-09-07 11:35:14.915 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'MedDir - Elimelech Goldstein' was deleted. Chat id: 1788773714856-b63d4bf8b49f12d162
+2026-09-07 11:35:14.915 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'MedDir - Shaya Lerner', occurrence 1
+2026-09-07 11:35:16.200 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'MedDir - Shaya Lerner'
+2026-09-07 11:35:17.539 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'MedDir - Shaya Lerner' was deleted. Chat id: 1788773717457-5d492a86289020544b
+2026-09-07 11:35:17.539 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'MedDir - Yona Abraham', occurrence 1
+2026-09-07 11:35:18.827 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'MedDir - Yona Abraham'
+2026-09-07 11:35:20.161 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'MedDir - Yona Abraham' was deleted. Chat id: 1788773720082-7676bf904893135894
+2026-09-07 11:35:20.161 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'MedDir - Yosef Levenbrown', occurrence 1
+2026-09-07 11:35:21.502 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'MedDir - Yosef Levenbrown'
+2026-09-07 11:35:22.846 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'MedDir - Yosef Levenbrown' was deleted. Chat id: 1788773722760-a7e861ecbdae81375e
+2026-09-07 11:35:22.846 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Meira Simanowitz', occurrence 1
+2026-09-07 11:35:24.139 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Meira Simanowitz'
+2026-09-07 11:35:25.462 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Meira Simanowitz' was deleted. Chat id: 1788773725398-0cfed277ecc312ac75
+2026-09-07 11:35:25.462 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Michael', occurrence 1
+2026-09-07 11:35:28.865 WARN  ringotel.tests.ContactMessagingAuditTests - Messaging is not available for contact 'Michael'. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788773728865.png
+2026-09-07 11:35:28.865 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Michael', occurrence 2
+2026-09-07 11:35:30.237 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Michael'
+2026-09-07 11:35:31.570 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Michael' was deleted. Chat id: 1788773731491-16a8d6abf9d52a7da5
+2026-09-07 11:35:31.570 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Miriam Hirsch', occurrence 1
+2026-09-07 11:35:32.895 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Miriam Hirsch'
+2026-09-07 11:35:34.232 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Miriam Hirsch' was deleted. Chat id: 1788773734179-f6124b7b4fd646c376
+2026-09-07 11:35:34.232 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Miriam Jacoby', occurrence 1
+2026-09-07 11:35:35.586 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Miriam Jacoby'
+2026-09-07 11:35:36.921 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Miriam Jacoby' was deleted. Chat id: 1788773736838-d972926521a9230d9b
+2026-09-07 11:35:36.921 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Mykola', occurrence 1
+2026-09-07 11:35:38.290 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Mykola'
+2026-09-07 11:35:39.645 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Mykola' was deleted. Chat id: 1788773522058-ecf8c69900b2b7b2b4
+2026-09-07 11:35:39.645 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Racheli Meister', occurrence 1
+2026-09-07 11:35:41.025 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Racheli Meister'
+2026-09-07 11:35:42.338 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Racheli Meister' was deleted. Chat id: 1788773742277-44e3fa9e57d33e4b6f
+2026-09-07 11:35:42.338 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Rivkah Horowitz', occurrence 1
+2026-09-07 11:35:43.738 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Rivkah Horowitz'
+2026-09-07 11:35:45.077 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Rivkah Horowitz' was deleted. Chat id: 1788773744991-268771b0a997174b20
+2026-09-07 11:35:45.077 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Sara Rochel Barrer', occurrence 1
+2026-09-07 11:35:46.485 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Sara Rochel Barrer'
+2026-09-07 11:35:47.809 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Sara Rochel Barrer' was deleted. Chat id: 1788773747739-517b81b768a8b73445
+2026-09-07 11:35:47.809 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Spare 3', occurrence 1
+2026-09-07 11:35:49.178 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Spare 3'
+2026-09-07 11:35:50.494 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Spare 3' was deleted. Chat id: 1788773750431-033304d854b7c18c09
+2026-09-07 11:35:50.494 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Spare 4', occurrence 1
+2026-09-07 11:35:51.884 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Spare 4'
+2026-09-07 11:35:53.217 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Spare 4' was deleted. Chat id: 1788773753137-35d481127e593b921b
+2026-09-07 11:35:53.217 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Tango', occurrence 1
+2026-09-07 11:35:54.673 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Tango'
+2026-09-07 11:35:56.001 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Tango' was deleted. Chat id: 1788773755924-e8dc0b56bcaa4f367a
+2026-09-07 11:35:56.001 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Test group CH', occurrence 1
+2026-09-07 11:35:57.413 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Test group CH'
+2026-09-07 11:35:58.747 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Test group CH' was deleted. Chat id: 1788773758668-1757398451fcc567d7
+2026-09-07 11:35:58.747 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'test1import1', occurrence 1
+2026-09-07 11:36:02.233 WARN  ringotel.tests.ContactMessagingAuditTests - Messaging is not available for contact 'test1import1'. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1788773762232.png
+2026-09-07 11:36:02.233 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Tzipy Bohem', occurrence 1
+2026-09-07 11:36:03.698 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Tzipy Bohem'
+2026-09-07 11:36:05.021 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Tzipy Bohem' was deleted. Chat id: 1788773764952-ad1cd0e2bbcf46aa4d
+2026-09-07 11:36:05.021 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Tzvi Pancer', occurrence 1
+2026-09-07 11:36:06.487 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Tzvi Pancer'
+2026-09-07 11:36:07.804 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Tzvi Pancer' was deleted. Chat id: 1788773767738-87fdd688be1ce1f078
+2026-09-07 11:36:07.804 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Tzvi Topper', occurrence 1
+2026-09-07 11:36:09.240 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Tzvi Topper'
+2026-09-07 11:36:10.557 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Tzvi Topper' was deleted. Chat id: 1788773770493-ae46bbe946e7eb0afb
+2026-09-07 11:36:10.557 INFO  ringotel.tests.ContactMessagingAuditTests - Checking contact 'Yonatan Zeigler', occurrence 1
+2026-09-07 11:36:12.043 INFO  ringotel.tests.ContactMessagingAuditTests - Message successfully sent to contact 'Yonatan Zeigler'
+2026-09-07 11:36:13.360 INFO  ringotel.tests.ContactMessagingAuditTests - Chat for contact 'Yonatan Zeigler' was deleted. Chat id: 1788773773297-649db104efc445ccb2
+2026-09-07 11:36:13.360 INFO  ringotel.tests.ContactMessagingAuditTests - Messaging audit completed. Total: 54, available: 45, unavailable: 9, sent: 45, deleted: 45
+2026-09-07 11:36:13.362 INFO  ringotel.tests.ContactMessagingAuditTests - PASSED: checkMessagingAvailabilityForAllContacts
+2026-09-07 11:36:13.548 INFO  ringotel.tests.ContactMessagingAuditTests - Stop test
+2026-09-07 11:36:13.548 INFO  ringotel.tests.ContactMessagingAuditTests - ******************************

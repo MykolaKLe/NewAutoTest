@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ringotel.tests.PresenceTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-09-07T09:36:44.251Z" hostname="MYKOLA" time="10.137">
+  <properties/>
+  <testcase name="changePresenceStatuses" classname="ringotel.tests.PresenceTests" time="8.79"/>
+  <system-out><![CDATA[11:36:44.262 INFO  ringotel.tests.PresenceTests - Start test changePresenceStatuses with data: []
+11:36:54.390 INFO  ringotel.tests.PresenceTests - PASSED: changePresenceStatuses
+11:36:54.514 INFO  ringotel.tests.PresenceTests - Stop test
+11:36:54.514 INFO  ringotel.tests.PresenceTests - ******************************
+]]></system-out>
+  <system-err><![CDATA[Sep 07, 2026 11:36:45 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 152
+Sep 07, 2026 11:36:45 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+WARNING: Unable to find version of CDP to use for 152.0.7977.76. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+</testsuite>

@@ -1,0 +1,37 @@
+2026-09-07 11:31:27.624 INFO  ringotel.tests.CallControlsTests - Logging in 4321
+2026-09-07 11:31:30.533 INFO  ringotel.tests.CallControlsTests - Logging in 1234
+2026-09-07 11:31:33.429 INFO  ringotel.tests.CallControlsTests - 4321 calls 1234
+2026-09-07 11:31:35.843 INFO  ringotel.tests.CallControlsTests - Outgoing call detected for 4321
+2026-09-07 11:31:38.421 INFO  ringotel.tests.CallControlsTests - Incoming call detected for 1234
+2026-09-07 11:31:39.435 INFO  ringotel.tests.CallControlsTests - 1234 answers the call
+2026-09-07 11:31:42.947 INFO  ringotel.tests.CallControlsTests - Call is active for both users
+2026-09-07 11:31:43.985 INFO  ringotel.tests.CallControlsTests - Checking Hold
+2026-09-07 11:31:44.030 INFO  ringotel.tests.CallControlsTests - Hold button clicked
+2026-09-07 11:31:47.044 INFO  ringotel.tests.CallControlsTests - Checking Resume
+2026-09-07 11:31:47.076 INFO  ringotel.tests.CallControlsTests - Resume button clicked
+2026-09-07 11:31:48.083 INFO  ringotel.tests.CallControlsTests - Checking Mute
+2026-09-07 11:31:48.133 INFO  ringotel.tests.CallControlsTests - Call is muted
+2026-09-07 11:31:49.644 INFO  ringotel.tests.CallControlsTests - Checking Unmute
+2026-09-07 11:31:49.691 INFO  ringotel.tests.CallControlsTests - Call was unmuted successfully
+2026-09-07 11:31:50.704 INFO  ringotel.tests.CallControlsTests - Checking Record
+2026-09-07 11:31:51.277 INFO  ringotel.tests.CallControlsTests - Recording started
+2026-09-07 11:31:52.781 INFO  ringotel.tests.CallControlsTests - Checking Stop Recording
+2026-09-07 11:31:53.341 INFO  ringotel.tests.CallControlsTests - Recording stopped successfully
+2026-09-07 11:31:54.353 INFO  ringotel.tests.CallControlsTests - Opening More call actions
+2026-09-07 11:31:54.447 INFO  ringotel.tests.CallControlsTests - More call actions are available
+2026-09-07 11:31:55.997 INFO  ringotel.tests.CallControlsTests - Opening Call Transfer
+2026-09-07 11:31:57.597 INFO  ringotel.tests.CallControlsTests - Selecting first available transfer contact
+2026-09-07 11:31:59.218 INFO  ringotel.tests.CallControlsTests - Transfer destination selected successfully
+2026-09-07 11:32:00.273 INFO  ringotel.tests.CallControlsTests - Ending call
+2026-09-07 11:32:01.876 INFO  ringotel.tests.CallControlsTests - Call controls scenario completed successfully
+2026-09-07 11:32:04.321 INFO  ringotel.tests.CallControlsTests - Logging in 4321
+2026-09-07 11:32:07.190 INFO  ringotel.tests.CallControlsTests - Logging in 1234
+2026-09-07 11:32:10.065 INFO  ringotel.tests.CallControlsTests - 4321 calls 1234
+2026-09-07 11:32:12.454 INFO  ringotel.tests.CallControlsTests - Outgoing call detected for 4321
+2026-09-07 11:32:15.028 INFO  ringotel.tests.CallControlsTests - Incoming call detected for 1234
+2026-09-07 11:32:16.044 INFO  ringotel.tests.CallControlsTests - 1234 rejects the call
+2026-09-07 11:32:16.088 INFO  ringotel.tests.CallControlsTests - Incoming call was successfully rejected by 1234
+2026-09-07 11:32:19.103 INFO  ringotel.tests.CallControlsTests - Call is still visible for 4321 after Reject, possibly because it continued to voicemail
+2026-09-07 11:32:19.103 INFO  ringotel.tests.CallControlsTests - Ending remaining call for 4321
+2026-09-07 11:32:19.146 INFO  ringotel.tests.CallControlsTests - Remaining call for 4321 was finished
+2026-09-07 11:32:19.146 INFO  ringotel.tests.CallControlsTests - Reject incoming call scenario completed successfully
