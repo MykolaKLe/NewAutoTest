@@ -3,18 +3,26 @@ plugins {
     id 'application'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'ringotel'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 dependencies {
-    implementation("org.seleniumhq.selenium:selenium-java:4.40.0")
-    implementation("org.testng:testng:7.11.0")
-    implementation("io.github.bonigarcia:webdrivermanager:6.3.4")
-    implementation("ch.qos.logback:logback-classic:1.6.3")
+    implementation 'org.seleniumhq.selenium:selenium-java:4.40.0'
+    implementation 'org.testng:testng:7.11.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:6.3.4'
+
+    implementation 'org.slf4j:slf4j-api:2.0.18'
+    implementation 'ch.qos.logback:logback-classic:1.6.3'
 }
 
 application {
@@ -23,102 +31,107 @@ application {
 
 def configureRingotelProperties(Test testTask) {
 
-    def properties = [
-            'ringotel.domain': 'RINGOTEL_DOMAIN',
-            'ringotel.user1' : 'RINGOTEL_USER_1',
-            'ringotel.pass1' : 'RINGOTEL_PASS_1',
-            'ringotel.user2' : 'RINGOTEL_USER_2',
-            'ringotel.pass2' : 'RINGOTEL_PASS_2'
+    def directProperties = [
+            'ringotel.domain'              : 'RINGOTEL_DOMAIN',
+            'ringotel.user1'               : 'RINGOTEL_USER_1',
+            'ringotel.pass1'               : 'RINGOTEL_PASS_1',
+            'ringotel.user2'               : 'RINGOTEL_USER_2',
+            'ringotel.pass2'               : 'RINGOTEL_PASS_2',
+            'ringotel.userCount'            : 'RINGOTEL_USER_COUNT',
+            'ringotel.chat.recipient'       : 'RINGOTEL_CHAT_RECIPIENT',
+            'ringotel.chat.occurrence'      : 'RINGOTEL_CHAT_OCCURRENCE',
+            'ringotel.chat.message'         : 'RINGOTEL_CHAT_MESSAGE',
+            'ringotel.chat.deleteAfterSend' : 'RINGOTEL_CHAT_DELETE_AFTER_SEND',
+            'ringotel.realCall.number'      : 'RINGOTEL_REAL_CALL_NUMBER',
+            'ringotel.realSms.number'       : 'RINGOTEL_REAL_SMS_NUMBER',
+            'ringotel.realSms.message'      : 'RINGOTEL_REAL_SMS_MESSAGE',
+            'ringotel.run.dir'              : 'RINGOTEL_RUN_DIR',
+            'ringotel.run.id'               : 'RINGOTEL_RUN_ID'
     ]
 
-    properties.each { systemName, environmentName ->
+    directProperties.each { systemName, environmentName ->
 
-        def value =
-                System.getenv(environmentName)
+        def value = System.getenv(environmentName)
 
         if (value != null && !value.isBlank()) {
+            testTask.systemProperty(systemName, value)
+        }
+    }
+
+    System.getenv().each { environmentName, value ->
+
+        def userMatcher =
+                environmentName =~ /^RINGOTEL_USER_(\d+)$/
+
+        if (userMatcher.matches()
+                && value != null
+                && !value.isBlank()) {
 
             testTask.systemProperty(
-                    systemName,
+                    "ringotel.user${userMatcher[0][1]}",
+                    value
+            )
+        }
+
+        def passwordMatcher =
+                environmentName =~ /^RINGOTEL_PASS_(\d+)$/
+
+        if (passwordMatcher.matches()
+                && value != null
+                && !value.isBlank()) {
+
+            testTask.systemProperty(
+                    "ringotel.pass${passwordMatcher[0][1]}",
                     value
             )
         }
     }
 }
 
-test {
-    useTestNG()
-
-    configureRingotelProperties(delegate)
-
-    if (project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
-    }
-
-    testLogging {
-        events "passed", "failed", "skipped"
-        showStandardStreams = true
-        exceptionFormat = 'full'
-    }
-}
-
-task qa(type: Test) {
+tasks.withType(Test).configureEach {
 
     useTestNG()
 
     configureRingotelProperties(delegate)
 
     if (project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
+        systemProperty 'browser', project.property('browser')
     }
 
     testLogging {
-        events "passed", "failed", "skipped"
+        events 'passed', 'failed', 'skipped'
         showStandardStreams = true
         exceptionFormat = 'full'
     }
 }
 
-def registerTask(
-        String taskName,
-        String suitePath
-) {
+tasks.named('jar') {
 
-    tasks.register(
-            taskName,
-            Test
-    ) {
+    dependsOn tasks.named('testClasses')
 
-        testClassesDirs =
-                sourceSets.test.output.classesDirs
+    from(sourceSets.test.output)
 
-        classpath =
-                sourceSets.test.runtimeClasspath
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
-        useTestNG() {
-            suites suitePath
-        }
-
-        configureRingotelProperties(delegate)
-
-        if (project.hasProperty('browser')) {
-            systemProperty 'browser', "${browser}"
-        }
-
-        testLogging {
-            events "passed", "failed", "skipped"
-            showStandardStreams = true
-            exceptionFormat = 'full'
-        }
+    manifest {
+        attributes(
+                'Main-Class': 'ringotel.app.RingotelTestRunnerApp'
+        )
     }
 }
 
-registerTask(
-        'quick',
-        'src/test/resources/quick.xml'
-)
+tasks.named('startScripts') {
+    dependsOn tasks.named('testClasses')
+}
 
-registerTask(
-        'regr',
-        'src/test/resources/regression.xml'
-)
+tasks.named('installDist') {
+    dependsOn tasks.named('testClasses')
+}
+
+tasks.named('distZip') {
+    dependsOn tasks.named('testClasses')
+}
+
+tasks.named('distTar') {
+    dependsOn tasks.named('testClasses')
+}

@@ -1,6 +1,7 @@
 package ringotel.fw;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +12,10 @@ import ringotel.core.BaseHelper;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ChatHelper extends BaseHelper {
 
@@ -22,18 +26,17 @@ public class ChatHelper extends BaseHelper {
 
     private final By contactsTab =
             By.xpath(
-                    "//button[.//span[normalize-space()='Contacts' or normalize-space()='Контакти']]"
+                    "//button[.//span[normalize-space()='Contacts']]"
             );
 
     private final By contactsSearch =
             By.cssSelector(
-                    "input[aria-label='Search'], input[aria-label='Пошук']"
+                    "input[aria-label='Search']"
             );
 
     private final By openCreateMenuButton =
             By.cssSelector(
-                    "button[aria-label='Open create menu'], " +
-                            "button[aria-label='Відкрити меню створення']"
+                    "button[aria-label='Open create menu']"
             );
 
     private final By newMessageButton =
@@ -43,8 +46,7 @@ public class ChatHelper extends BaseHelper {
 
     private final By newMessageSearch =
             By.cssSelector(
-                    "input[aria-label='Пошук контактів'], " +
-                            "input[aria-label='Search contacts']"
+                    "input[aria-label='Search contacts']"
             );
 
     private final By messageInput =
@@ -95,21 +97,27 @@ public class ChatHelper extends BaseHelper {
 
     public ChatHelper openContacts() {
 
-        click(contactsButton);
+        click(
+                contactsButton
+        );
 
         return this;
     }
 
     public ChatHelper openContactsTab() {
 
-        click(contactsTab);
+        click(
+                contactsTab
+        );
 
         return this;
     }
 
-    public ChatHelper searchContact(String name) {
+    public ChatHelper searchContact(
+            String name
+    ) {
 
-        type(
+        setReactInputValue(
                 contactsSearch,
                 name
         );
@@ -117,18 +125,28 @@ public class ChatHelper extends BaseHelper {
         return this;
     }
 
-    public ChatHelper openContact(String name) {
+    public ChatHelper openContact(
+            String name
+    ) {
 
         By contact =
                 By.xpath(
-                        "//*[normalize-space()='"
-                                + name
-                                + "']"
+                        "//*[normalize-space()="
+                                + xpathLiteral(
+                                normalizeContactName(
+                                        name
+                                )
+                        )
+                                + "]"
                 );
 
-        click(contact);
+        click(
+                contact
+        );
 
-        waitForElement(messageInput);
+        waitForElement(
+                messageInput
+        );
 
         return this;
     }
@@ -141,20 +159,39 @@ public class ChatHelper extends BaseHelper {
 
         openContactsTab();
 
-        searchContact(name);
+        searchContact(
+                name
+        );
 
-        openContact(name);
+        openContact(
+                name
+        );
 
         return this;
     }
 
     public ChatHelper openNewMessage() {
 
-        click(openCreateMenuButton);
+        if (isNewMessageWindowOpen()) {
 
-        click(newMessageButton);
+            clearNewMessageSearch();
 
-        waitForElement(newMessageSearch);
+            return this;
+        }
+
+        click(
+                openCreateMenuButton
+        );
+
+        click(
+                newMessageButton
+        );
+
+        waitForElement(
+                newMessageSearch
+        );
+
+        clearNewMessageSearch();
 
         return this;
     }
@@ -169,8 +206,30 @@ public class ChatHelper extends BaseHelper {
     public ChatHelper ensureNewMessageWindowOpen() {
 
         if (!isNewMessageWindowOpen()) {
+
             openNewMessage();
+
+        } else {
+
+            clearNewMessageSearch();
         }
+
+        return this;
+    }
+
+    public ChatHelper clearNewMessageSearch() {
+
+        if (!isVisible(
+                newMessageSearch
+        )) {
+
+            return this;
+        }
+
+        setReactInputValue(
+                newMessageSearch,
+                ""
+        );
 
         return this;
     }
@@ -179,9 +238,50 @@ public class ChatHelper extends BaseHelper {
             String name
     ) {
 
-        type(
+        setReactInputValue(
                 newMessageSearch,
                 name
+        );
+
+        String expectedName =
+                normalizeContactName(
+                        name
+                );
+
+        wait.until(
+                driver -> {
+
+                    List<WebElement> rows =
+                            driver.findElements(
+                                    newMessageContactRows
+                            );
+
+                    for (WebElement row : rows) {
+
+                        try {
+
+                            if (!row.isDisplayed()) {
+                                continue;
+                            }
+
+                            String rowName =
+                                    extractContactName(
+                                            row
+                                    );
+
+                            if (expectedName.equals(
+                                    rowName
+                            )) {
+
+                                return true;
+                            }
+
+                        } catch (Exception ignored) {
+                        }
+                    }
+
+                    return false;
+                }
         );
 
         return this;
@@ -202,61 +302,34 @@ public class ChatHelper extends BaseHelper {
             int occurrence
     ) {
 
-        String expectedName =
-                normalizeContactName(
-                        name
-                );
-
         WebElement contact =
-                new WebDriverWait(
-                        driver,
-                        Duration.ofSeconds(10)
-                ).until(d -> {
-
-                    List<WebElement> rows =
-                            d.findElements(
-                                    newMessageContactRows
-                            );
-
-                    int currentOccurrence = 0;
-
-                    for (WebElement row : rows) {
-
-                        if (!row.isDisplayed()) {
-                            continue;
-                        }
-
-                        String rowName =
-                                extractContactName(
-                                        row
-                                );
-
-                        if (rowName.equals(
-                                expectedName
-                        )) {
-
-                            currentOccurrence++;
-
-                            if (currentOccurrence
-                                    == occurrence) {
-
-                                return row;
-                            }
-                        }
-                    }
-
-                    return null;
-                });
+                waitForNewMessageContact(
+                        name,
+                        occurrence
+                );
 
         contact.click();
 
-        pause(700);
+        pause(
+                500
+        );
 
         return this;
     }
 
     public ChatHelper openContactFromNewMessage(
             String name
+    ) {
+
+        return openContactFromNewMessage(
+                name,
+                1
+        );
+    }
+
+    public ChatHelper openContactFromNewMessage(
+            String name,
+            int occurrence
     ) {
 
         openNewMessage();
@@ -266,10 +339,62 @@ public class ChatHelper extends BaseHelper {
         );
 
         selectNewMessageContact(
-                name
+                name,
+                occurrence
         );
 
         return this;
+    }
+
+    public String openRandomAvailableContact(
+            int messageInputWaitSeconds
+    ) {
+
+        openNewMessage();
+
+        List<RecipientCandidate> candidates =
+                getNewMessageContactCandidates();
+
+        if (candidates.isEmpty()) {
+
+            throw new RuntimeException(
+                    "No contacts were found in New Message"
+            );
+        }
+
+        Collections.shuffle(
+                candidates
+        );
+
+        for (RecipientCandidate candidate : candidates) {
+
+            try {
+
+                ensureNewMessageWindowOpen();
+
+                searchNewMessageContact(
+                        candidate.name
+                );
+
+                selectNewMessageContact(
+                        candidate.name,
+                        candidate.occurrence
+                );
+
+                if (isMessageInputAvailable(
+                        messageInputWaitSeconds
+                )) {
+
+                    return candidate.name;
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        throw new RuntimeException(
+                "No contact with available messaging was found"
+        );
     }
 
     public boolean isMessageInputAvailable(
@@ -280,7 +405,9 @@ public class ChatHelper extends BaseHelper {
 
             new WebDriverWait(
                     driver,
-                    Duration.ofSeconds(seconds)
+                    Duration.ofSeconds(
+                            seconds
+                    )
             ).until(
                     ExpectedConditions.visibilityOfElementLocated(
                             messageInput
@@ -323,9 +450,14 @@ public class ChatHelper extends BaseHelper {
 
         By messageLocator =
                 By.xpath(
-                        "//main//*[normalize-space()='"
-                                + message
-                                + "']"
+                        "//main//*[" +
+                                "normalize-space()="
+                                + xpathLiteral(
+                                normalizeContactName(
+                                        message
+                                )
+                        )
+                                + "]"
                 );
 
         wait.until(
@@ -339,38 +471,17 @@ public class ChatHelper extends BaseHelper {
 
     public List<String> getNewMessageContactNames() {
 
-        waitForElement(
-                newMessageSearch
-        );
-
-        wait.until(
-                ExpectedConditions.presenceOfAllElementsLocatedBy(
-                        newMessageContactRows
-                )
-        );
-
-        List<WebElement> rows =
-                driver.findElements(
-                        newMessageContactRows
-                );
+        List<RecipientCandidate> candidates =
+                getNewMessageContactCandidates();
 
         List<String> contacts =
                 new ArrayList<>();
 
-        for (WebElement row : rows) {
+        for (RecipientCandidate candidate : candidates) {
 
-            if (!row.isDisplayed()) {
-                continue;
-            }
-
-            String name =
-                    extractContactName(
-                            row
-                    );
-
-            if (!name.isEmpty()) {
-                contacts.add(name);
-            }
+            contacts.add(
+                    candidate.name
+            );
         }
 
         return contacts;
@@ -391,22 +502,29 @@ public class ChatHelper extends BaseHelper {
     public ChatHelper openFirstChat() {
 
         WebElement chat =
-                wait.until(d -> {
+                wait.until(
+                        driver -> {
 
-                    List<WebElement> chats =
-                            d.findElements(
-                                    chatRows
-                            );
+                            List<WebElement> chats =
+                                    driver.findElements(
+                                            chatRows
+                                    );
 
-                    for (WebElement element : chats) {
+                            for (WebElement element : chats) {
 
-                        if (element.isDisplayed()) {
-                            return element;
+                                try {
+
+                                    if (element.isDisplayed()) {
+                                        return element;
+                                    }
+
+                                } catch (Exception ignored) {
+                                }
+                            }
+
+                            return null;
                         }
-                    }
-
-                    return null;
-                });
+                );
 
         String chatId =
                 chat.findElement(
@@ -423,9 +541,11 @@ public class ChatHelper extends BaseHelper {
         By selectedChat =
                 By.xpath(
                         "//button[@aria-pressed='true' " +
-                                "and ./div[@data-id='"
-                                + chatId
-                                + "']]"
+                                "and ./div[@data-id="
+                                + xpathLiteral(
+                                chatId
+                        )
+                                + "]]"
                 );
 
         wait.until(
@@ -434,7 +554,9 @@ public class ChatHelper extends BaseHelper {
                 )
         );
 
-        pause(300);
+        pause(
+                300
+        );
 
         return this;
     }
@@ -488,12 +610,6 @@ public class ChatHelper extends BaseHelper {
                 continue;
             }
 
-            if (text.equalsIgnoreCase(
-                    "test"
-            )) {
-                continue;
-            }
-
             if (text.length() <= 2) {
                 continue;
             }
@@ -506,7 +622,10 @@ public class ChatHelper extends BaseHelper {
 
     public ChatHelper openCurrentChatMenu() {
 
-        if (isVisible(deleteChatButton)) {
+        if (isVisible(
+                deleteChatButton
+        )) {
+
             return this;
         }
 
@@ -517,15 +636,19 @@ public class ChatHelper extends BaseHelper {
 
         for (WebElement button : buttons) {
 
-            if (!button.isDisplayed()) {
-                continue;
-            }
-
             try {
+
+                if (!button.isDisplayed()
+                        || !button.isEnabled()) {
+
+                    continue;
+                }
 
                 button.click();
 
-                pause(250);
+                pause(
+                        250
+                );
 
                 if (isVisible(
                         deleteChatButton
@@ -542,7 +665,9 @@ public class ChatHelper extends BaseHelper {
 
                     button.click();
 
-                    pause(150);
+                    pause(
+                            150
+                    );
                 }
 
             } catch (Exception ignored) {
@@ -592,7 +717,7 @@ public class ChatHelper extends BaseHelper {
                     driver,
                     Duration.ofSeconds(10)
             ).until(
-                    d -> !isChatPresent(
+                    driver -> !isChatPresent(
                             chatId
                     )
             );
@@ -605,26 +730,154 @@ public class ChatHelper extends BaseHelper {
             );
         }
 
-        pause(400);
+        pause(
+                400
+        );
 
         return this;
     }
 
-    private boolean isChatPresent(
+    public boolean isChatPresent(
             String chatId
     ) {
 
         By chat =
                 By.xpath(
                         "//button[@aria-pressed " +
-                                "and ./div[@data-id='"
-                                + chatId
-                                + "']]"
+                                "and ./div[@data-id="
+                                + xpathLiteral(
+                                chatId
+                        )
+                                + "]]"
                 );
 
         return !driver.findElements(
                 chat
         ).isEmpty();
+    }
+
+    private WebElement waitForNewMessageContact(
+            String name,
+            int occurrence
+    ) {
+
+        String expectedName =
+                normalizeContactName(
+                        name
+                );
+
+        return new WebDriverWait(
+                driver,
+                Duration.ofSeconds(10)
+        ).until(
+                driver -> {
+
+                    List<WebElement> rows =
+                            driver.findElements(
+                                    newMessageContactRows
+                            );
+
+                    int currentOccurrence =
+                            0;
+
+                    for (WebElement row : rows) {
+
+                        try {
+
+                            if (!row.isDisplayed()) {
+                                continue;
+                            }
+
+                            String rowName =
+                                    extractContactName(
+                                            row
+                                    );
+
+                            if (!expectedName.equals(
+                                    rowName
+                            )) {
+
+                                continue;
+                            }
+
+                            currentOccurrence++;
+
+                            if (currentOccurrence
+                                    == occurrence) {
+
+                                return row;
+                            }
+
+                        } catch (Exception ignored) {
+                        }
+                    }
+
+                    return null;
+                }
+        );
+    }
+
+    private List<RecipientCandidate> getNewMessageContactCandidates() {
+
+        waitForElement(
+                newMessageSearch
+        );
+
+        clearNewMessageSearch();
+
+        wait.until(
+                ExpectedConditions.presenceOfAllElementsLocatedBy(
+                        newMessageContactRows
+                )
+        );
+
+        List<WebElement> rows =
+                driver.findElements(
+                        newMessageContactRows
+                );
+
+        List<RecipientCandidate> contacts =
+                new ArrayList<>();
+
+        Map<String, Integer> occurrences =
+                new HashMap<>();
+
+        for (WebElement row : rows) {
+
+            try {
+
+                if (!row.isDisplayed()) {
+                    continue;
+                }
+
+                String name =
+                        extractContactName(
+                                row
+                        );
+
+                if (name.isEmpty()) {
+                    continue;
+                }
+
+                int occurrence =
+                        occurrences.merge(
+                                name,
+                                1,
+                                Integer::sum
+                        );
+
+                contacts.add(
+                        new RecipientCandidate(
+                                name,
+                                occurrence
+                        )
+                );
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        return contacts;
     }
 
     private String extractContactName(
@@ -659,23 +912,78 @@ public class ChatHelper extends BaseHelper {
     }
 
     private String normalizeContactName(
-            String name
+            String value
     ) {
 
-        if (name == null) {
+        if (value == null) {
             return "";
         }
 
-        return name
+        return value
                 .replace(
                         "\uFFFC",
                         ""
+                )
+                .replace(
+                        '\u00A0',
+                        ' '
                 )
                 .replaceAll(
                         "\\s+",
                         " "
                 )
                 .trim();
+    }
+
+    private void setReactInputValue(
+            By locator,
+            String value
+    ) {
+
+        WebElement input =
+                wait.until(
+                        ExpectedConditions.visibilityOfElementLocated(
+                                locator
+                        )
+                );
+
+        JavascriptExecutor javascriptExecutor =
+                (JavascriptExecutor) driver;
+
+        javascriptExecutor.executeScript(
+                "const input = arguments[0];" +
+                        "const value = arguments[1];" +
+                        "const setter = Object.getOwnPropertyDescriptor(" +
+                        "window.HTMLInputElement.prototype, 'value').set;" +
+                        "setter.call(input, value);" +
+                        "input.dispatchEvent(new Event('input', { bubbles: true }));" +
+                        "input.dispatchEvent(new Event('change', { bubbles: true }));",
+                input,
+                value
+        );
+
+        wait.until(
+                driver -> {
+
+                    WebElement currentInput =
+                            driver.findElement(
+                                    locator
+                            );
+
+                    String currentValue =
+                            currentInput.getDomProperty(
+                                    "value"
+                            );
+
+                    if (currentValue == null) {
+                        currentValue = "";
+                    }
+
+                    return value.equals(
+                            currentValue
+                    );
+                }
+        );
     }
 
     private boolean isVisible(
@@ -700,5 +1008,83 @@ public class ChatHelper extends BaseHelper {
         }
 
         return false;
+    }
+
+    private String xpathLiteral(
+            String value
+    ) {
+
+        if (!value.contains("'")) {
+
+            return "'"
+                    + value
+                    + "'";
+        }
+
+        if (!value.contains("\"")) {
+
+            return "\""
+                    + value
+                    + "\"";
+        }
+
+        String[] parts =
+                value.split(
+                        "'",
+                        -1
+                );
+
+        StringBuilder result =
+                new StringBuilder(
+                        "concat("
+                );
+
+        for (int i = 0;
+             i < parts.length;
+             i++) {
+
+            if (i > 0) {
+
+                result.append(
+                        ", \"'\", "
+                );
+            }
+
+            result.append(
+                    "'"
+            );
+
+            result.append(
+                    parts[i]
+            );
+
+            result.append(
+                    "'"
+            );
+        }
+
+        result.append(
+                ")"
+        );
+
+        return result.toString();
+    }
+
+    private static class RecipientCandidate {
+
+        private final String name;
+        private final int occurrence;
+
+        private RecipientCandidate(
+                String name,
+                int occurrence
+        ) {
+
+            this.name =
+                    name;
+
+            this.occurrence =
+                    occurrence;
+        }
     }
 }

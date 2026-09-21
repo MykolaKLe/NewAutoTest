@@ -65,12 +65,10 @@ public class CallHelper extends BaseHelper {
                             "[aria-label^='Transfer call with ']"
             );
 
-    private final By holdResumeButton =
+    private final By holdButton =
             By.cssSelector(
                     "button[data-call-control='control']" +
-                            "[aria-label^='Hold call with '], " +
-                            "button[data-call-control='control']" +
-                            "[aria-label^='Resume call with ']"
+                            "[aria-label^='Hold call with ']"
             );
 
     private final By resumeButton =
@@ -174,8 +172,64 @@ public class CallHelper extends BaseHelper {
         super(driver);
     }
 
+    public void waitForClientReady() {
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(30)
+        ).until(
+                ExpectedConditions.elementToBeClickable(
+                        keypadButton
+                )
+        );
+
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(15)
+        ).until(
+                d -> !isVisible(
+                        callFrame
+                )
+        );
+    }
+
+    public boolean isClientReady() {
+        try {
+            List<WebElement> buttons =
+                    driver.findElements(
+                            keypadButton
+                    );
+
+            if (buttons.isEmpty()) {
+                return false;
+            }
+
+            WebElement button =
+                    buttons.get(0);
+
+            return button.isDisplayed()
+                    && button.isEnabled()
+                    && !isVisible(
+                    callFrame
+            );
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public void openKeypad() {
-        click(keypadButton);
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(30)
+        ).until(
+                ExpectedConditions.elementToBeClickable(
+                        keypadButton
+                )
+        );
+
+        click(
+                keypadButton
+        );
     }
 
     public void pressDigit(String digit) {
@@ -198,24 +252,35 @@ public class CallHelper extends BaseHelper {
 
         new Actions(driver)
                 .clickAndHold(zero)
-                .pause(Duration.ofMillis(1200))
+                .pause(
+                        Duration.ofMillis(
+                                1200
+                        )
+                )
                 .release()
                 .perform();
     }
 
     public void dialNumber(String number) {
-        for (char symbol : number.toCharArray()) {
+        for (char symbol :
+                number.toCharArray()) {
 
             if (symbol == '+') {
 
                 pressPlus();
 
-            } else if (Character.isDigit(symbol)
-                    || symbol == '*'
-                    || symbol == '#') {
+            } else if (
+                    Character.isDigit(
+                            symbol
+                    )
+                            || symbol == '*'
+                            || symbol == '#'
+            ) {
 
                 pressDigit(
-                        String.valueOf(symbol)
+                        String.valueOf(
+                                symbol
+                        )
                 );
 
             } else {
@@ -229,12 +294,26 @@ public class CallHelper extends BaseHelper {
     }
 
     public void startCall() {
-        click(startCallButton);
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
+                ExpectedConditions.elementToBeClickable(
+                        startCallButton
+                )
+        );
+
+        click(
+                startCallButton
+        );
     }
 
     public void makeCallFromKeypad(String number) {
+        waitForClientReady();
         openKeypad();
-        dialNumber(number);
+        dialNumber(
+                number
+        );
         startCall();
     }
 
@@ -269,7 +348,7 @@ public class CallHelper extends BaseHelper {
     public void waitForIncomingCall() {
         new WebDriverWait(
                 driver,
-                Duration.ofSeconds(25)
+                Duration.ofSeconds(35)
         ).until(
                 ExpectedConditions.visibilityOfElementLocated(
                         ringingCallFrame
@@ -284,6 +363,15 @@ public class CallHelper extends BaseHelper {
     }
 
     public void answerIncomingCall() {
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
+                ExpectedConditions.elementToBeClickable(
+                        answerCallButton
+                )
+        );
+
         click(
                 answerCallButton
         );
@@ -292,13 +380,22 @@ public class CallHelper extends BaseHelper {
     }
 
     public void rejectIncomingCall() {
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
+                ExpectedConditions.elementToBeClickable(
+                        rejectIncomingCallButton
+                )
+        );
+
         click(
                 rejectIncomingCallButton
         );
 
         new WebDriverWait(
                 driver,
-                Duration.ofSeconds(10)
+                Duration.ofSeconds(15)
         ).until(
                 d -> !isVisible(
                         ringingCallFrame
@@ -309,7 +406,7 @@ public class CallHelper extends BaseHelper {
     public void waitForOutgoingCall() {
         new WebDriverWait(
                 driver,
-                Duration.ofSeconds(25)
+                Duration.ofSeconds(30)
         ).until(
                 d -> isVisible(
                         callFrame
@@ -320,7 +417,7 @@ public class CallHelper extends BaseHelper {
     public void waitForActiveCall() {
         new WebDriverWait(
                 driver,
-                Duration.ofSeconds(25)
+                Duration.ofSeconds(30)
         ).until(
                 ExpectedConditions.visibilityOfElementLocated(
                         activeCallFrame
@@ -347,14 +444,50 @@ public class CallHelper extends BaseHelper {
     }
 
     public void holdCall() {
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
+                ExpectedConditions.elementToBeClickable(
+                        holdButton
+                )
+        );
+
         click(
-                holdResumeButton
+                holdButton
+        );
+
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(30)
+        ).until(
+                d -> isVisible(
+                        resumeButton
+                )
         );
     }
 
     public void resumeCall() {
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
+                ExpectedConditions.elementToBeClickable(
+                        resumeButton
+                )
+        );
+
         click(
-                holdResumeButton
+                resumeButton
+        );
+
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(30)
+        ).until(
+                d -> isVisible(
+                        holdButton
+                )
         );
     }
 
@@ -369,7 +502,10 @@ public class CallHelper extends BaseHelper {
                 muteButton
         );
 
-        wait.until(
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
                 ExpectedConditions.visibilityOfElementLocated(
                         unmuteButton
                 )
@@ -381,7 +517,10 @@ public class CallHelper extends BaseHelper {
                 unmuteButton
         );
 
-        wait.until(
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
                 ExpectedConditions.visibilityOfElementLocated(
                         muteButton
                 )
@@ -399,7 +538,10 @@ public class CallHelper extends BaseHelper {
                 recordButton
         );
 
-        wait.until(
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
                 ExpectedConditions.visibilityOfElementLocated(
                         stopRecordingButton
                 )
@@ -411,7 +553,10 @@ public class CallHelper extends BaseHelper {
                 stopRecordingButton
         );
 
-        wait.until(
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
                 ExpectedConditions.visibilityOfElementLocated(
                         recordButton
                 )
@@ -429,7 +574,10 @@ public class CallHelper extends BaseHelper {
                 moreCallActionsButton
         );
 
-        wait.until(
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
                 ExpectedConditions.visibilityOfElementLocated(
                         moreActionsPanel
                 )
@@ -447,7 +595,10 @@ public class CallHelper extends BaseHelper {
                 moreCallActionsButton
         );
 
-        wait.until(
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
                 d -> !isVisible(
                         moreActionsPanel
                 )
@@ -489,7 +640,10 @@ public class CallHelper extends BaseHelper {
                 transferButton
         );
 
-        wait.until(
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
                 ExpectedConditions.visibilityOfElementLocated(
                         transferDialog
                 )
@@ -510,28 +664,44 @@ public class CallHelper extends BaseHelper {
 
     public void selectFirstTransferContact() {
         WebElement contact =
-                wait.until(d -> {
+                new WebDriverWait(
+                        driver,
+                        Duration.ofSeconds(20)
+                ).until(
+                        d -> {
 
-                    List<WebElement> contacts =
-                            d.findElements(
-                                    transferContactButtons
-                            );
+                            List<WebElement> contacts =
+                                    d.findElements(
+                                            transferContactButtons
+                                    );
 
-                    for (WebElement element : contacts) {
+                            for (WebElement element :
+                                    contacts) {
 
-                        if (element.isDisplayed()
-                                && element.isEnabled()) {
+                                try {
 
-                            return element;
+                                    if (
+                                            element.isDisplayed()
+                                                    && element.isEnabled()
+                                    ) {
+
+                                        return element;
+                                    }
+
+                                } catch (Exception ignored) {
+                                }
+                            }
+
+                            return null;
                         }
-                    }
-
-                    return null;
-                });
+                );
 
         contact.click();
 
-        wait.until(
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
                 d -> isBlindTransferEnabled()
                         && isAttendedTransferEnabled()
         );
@@ -598,7 +768,10 @@ public class CallHelper extends BaseHelper {
                 closeTransferDialogButton
         );
 
-        wait.until(
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(20)
+        ).until(
                 d -> !isVisible(
                         transferDialog
                 )
@@ -606,6 +779,15 @@ public class CallHelper extends BaseHelper {
     }
 
     public void endCall() {
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(15)
+        ).until(
+                ExpectedConditions.elementToBeClickable(
+                        endCallButton
+                )
+        );
+
         click(
                 endCallButton
         );
@@ -614,7 +796,7 @@ public class CallHelper extends BaseHelper {
     public void waitForCallFinished() {
         new WebDriverWait(
                 driver,
-                Duration.ofSeconds(20)
+                Duration.ofSeconds(30)
         ).until(
                 d -> !isVisible(
                         callFrame
@@ -633,6 +815,19 @@ public class CallHelper extends BaseHelper {
 
             return false;
         }
+    }
+
+    public void waitForIdleAfterCall() {
+        waitForCallFinished();
+
+        new WebDriverWait(
+                driver,
+                Duration.ofSeconds(30)
+        ).until(
+                d -> isVisible(
+                        keypadButton
+                )
+        );
     }
 
     public void waitUpToAndFinishCall(int seconds) {
@@ -656,8 +851,10 @@ public class CallHelper extends BaseHelper {
                 System.currentTimeMillis()
                         + seconds * 1000L;
 
-        while (System.currentTimeMillis()
-                < deadline) {
+        while (
+                System.currentTimeMillis()
+                        < deadline
+        ) {
 
             if (!isVisible(
                     callFrame
@@ -671,11 +868,14 @@ public class CallHelper extends BaseHelper {
             );
         }
 
-        if (isVisible(
-                callFrame
-        ) && isVisible(
-                endCallButton
-        )) {
+        if (
+                isVisible(
+                        callFrame
+                )
+                        && isVisible(
+                        endCallButton
+                )
+        ) {
 
             endCall();
 
@@ -689,7 +889,8 @@ public class CallHelper extends BaseHelper {
                         locator
                 );
 
-        for (WebElement element : elements) {
+        for (WebElement element :
+                elements) {
 
             try {
 

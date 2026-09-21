@@ -1,0 +1,47 @@
+Starting a Gradle Daemon, 1 busy and 1 stopped Daemons could not be reused, use --status for details
+> Task :clean
+> Task :compileJava
+> Task :processResources NO-SOURCE
+> Task :classes
+> Task :compileTestJava
+> Task :processTestResources
+> Task :testClasses
+
+> Task :test
+
+Gradle suite > Gradle test > ringotel.tests.ChatTests STANDARD_OUT
+    16:43:13.605 INFO  ringotel.tests.ChatTests - Start test sendChatMessage with data: []
+
+Gradle suite > Gradle test > ringotel.tests.ChatTests STANDARD_ERROR
+    Sep 21, 2026 4:43:14 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:43:14 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.ChatTests > sendChatMessage STANDARD_OUT
+    16:43:41.561 INFO  ringotel.tests.ChatTests - Specific recipient chat scenario started
+    16:43:41.561 INFO  ringotel.tests.ChatTests - Recipient: Mykola
+    16:43:41.561 INFO  ringotel.tests.ChatTests - Recipient occurrence: 1
+    16:43:41.561 INFO  ringotel.tests.ChatTests - Delete chat after send: true
+    16:43:41.561 INFO  ringotel.tests.ChatTests - Logging in 4321
+    16:43:45.480 INFO  ringotel.tests.ChatTests - 4321 logged in successfully
+    16:43:45.480 INFO  ringotel.tests.ChatTests - Opening specific recipient 'Mykola' occurrence 1
+    16:43:47.127 INFO  ringotel.tests.ChatTests - Messaging is available for 'Mykola'
+    16:43:47.127 INFO  ringotel.tests.ChatTests - Sending message to 'Mykola': QA
+    16:43:47.210 INFO  ringotel.tests.ChatTests - Message sent
+    16:43:47.220 INFO  ringotel.tests.ChatTests - Message verified
+    16:43:47.244 INFO  ringotel.tests.ChatTests - Active chat id: 1790001827115-311d02feeb319cb0bd
+    16:43:47.244 INFO  ringotel.tests.ChatTests - Deleting chat with 'Mykola'
+    16:43:48.088 INFO  ringotel.tests.ChatTests - Chat deleted successfully. Chat id: 1790001827115-311d02feeb319cb0bd
+    16:43:48.088 INFO  ringotel.tests.ChatTests - Specific recipient chat scenario completed successfully for 'Mykola'
+
+Gradle suite > Gradle test > ringotel.tests.ChatTests > sendChatMessage PASSED
+
+Gradle suite > Gradle test > ringotel.tests.ChatTests STANDARD_OUT
+    16:43:48.091 INFO  ringotel.tests.ChatTests - PASSED: sendChatMessage
+    16:43:48.288 INFO  ringotel.tests.ChatTests - Stop test
+    16:43:48.288 INFO  ringotel.tests.ChatTests - ******************************
+
+BUILD SUCCESSFUL in 41s
+5 actionable tasks: 5 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.0/userguide/configuration_cache_enabling.html

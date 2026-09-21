@@ -1,6 +1,7 @@
 package ringotel.utils;
 
 import org.testng.annotations.DataProvider;
+import ringotel.core.TestData;
 import ringotel.model.User;
 
 import java.util.ArrayList;
@@ -12,26 +13,21 @@ public class MyDataProviders {
     @DataProvider
     public Iterator<Object[]> ringotelUsers() {
 
-        List<Object[]> users = new ArrayList<>();
+        List<Object[]> testData =
+                new ArrayList<>();
 
-        users.add(
-                new Object[]{
-                        new User()
-                                .setDomain("testwebsoftphone")
-                                .setUsername("4321")
-                                .setPassword("obFxbmYKYy9pwjAD")
-                }
-        );
+        List<User> users =
+                TestData.getLoginUsers();
 
-        users.add(
-                new Object[]{
-                        new User()
-                                .setDomain("testwebsoftphone")
-                                .setUsername("1234")
-                                .setPassword("R0eE6jAMUmyck7uD")
-                }
-        );
+        for (User user : users) {
 
-        return users.iterator();
+            testData.add(
+                    new Object[]{
+                            user
+                    }
+            );
+        }
+
+        return testData.iterator();
     }
 }

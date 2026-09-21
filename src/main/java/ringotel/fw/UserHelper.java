@@ -8,7 +8,9 @@ import ringotel.model.User;
 public class UserHelper extends BaseHelper {
 
     private final By domainInput =
-            By.cssSelector("input[placeholder='Company domain']");
+            By.cssSelector(
+                    "input[placeholder='Company domain']"
+            );
 
     private final By domainContinueButton =
             By.xpath(
@@ -17,54 +19,107 @@ public class UserHelper extends BaseHelper {
             );
 
     private final By usernameInput =
-            By.cssSelector("input[placeholder='Enter username']");
+            By.cssSelector(
+                    "input[placeholder='Enter username']"
+            );
 
     private final By passwordInput =
-            By.cssSelector("input[placeholder='Enter password']");
+            By.cssSelector(
+                    "input[placeholder='Enter password']"
+            );
 
     private final By loginButton =
-            By.xpath("//button[normalize-space()='Log in']");
+            By.xpath(
+                    "//button[normalize-space()='Log in']"
+            );
 
     private final By accountButton =
-            By.cssSelector("button[aria-label='Account']");
+            By.cssSelector(
+                    "button[aria-label='Account']"
+            );
 
-    public UserHelper(WebDriver driver) {
-        super(driver);
+    public UserHelper(
+            WebDriver driver
+    ) {
+
+        super(
+                driver
+        );
     }
 
-    public void enterDomain(String domain) {
+    public void enterDomain(
+            String domain
+    ) {
 
-        type(domainInput, domain);
+        type(
+                domainInput,
+                domain
+        );
 
-        click(domainContinueButton);
+        click(
+                domainContinueButton
+        );
 
-        waitForElement(usernameInput);
+        waitForElement(
+                usernameInput
+        );
     }
 
-    public void fillLoginForm(User user) {
+    public void fillLoginForm(
+            User user
+    ) {
 
-        type(usernameInput, user.getUsername());
-        type(passwordInput, user.getPassword());
+        type(
+                usernameInput,
+                user.getUsername()
+        );
+
+        type(
+                passwordInput,
+                user.getPassword()
+        );
     }
 
     public void clickOnLoginButton() {
-        click(loginButton);
+
+        click(
+                loginButton
+        );
     }
 
-    public void login(User user) {
+    public void waitForLogin() {
 
-        enterDomain(user.getDomain());
+        waitForElement(
+                accountButton
+        );
+    }
 
-        fillLoginForm(user);
+    public void login(
+            User user
+    ) {
+
+        enterDomain(
+                user.getDomain()
+        );
+
+        fillLoginForm(
+                user
+        );
 
         clickOnLoginButton();
 
-        waitForElement(accountButton);
+        waitForLogin();
     }
 
     public boolean isLoggedIn() {
 
-        return isElementPresent(accountButton)
-                || driver.getCurrentUrl().contains("/inbox/");
+        return isElementPresent(
+                accountButton
+        )
+                || driver
+                .getCurrentUrl()
+                .contains(
+                        "/inbox/"
+                );
     }
 }

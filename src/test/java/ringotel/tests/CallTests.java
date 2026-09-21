@@ -1,6 +1,8 @@
 package ringotel.tests;
 
 import org.openqa.selenium.remote.Browser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -12,8 +14,13 @@ import ringotel.model.User;
 
 public class CallTests {
 
-    private ApplicationManager callerApp;
-    private ApplicationManager calleeApp;
+    private final Logger logger =
+            LoggerFactory.getLogger(
+                    CallTests.class
+            );
+
+    private ApplicationManager user1App;
+    private ApplicationManager user2App;
 
     private final User user1 =
             TestData.getUser1();
@@ -30,18 +37,18 @@ public class CallTests {
                         Browser.CHROME.browserName()
                 );
 
-        callerApp =
+        user1App =
                 new ApplicationManager(
                         browser
                 );
 
-        calleeApp =
+        user2App =
                 new ApplicationManager(
                         browser
                 );
 
-        callerApp.init();
-        calleeApp.init();
+        user1App.init();
+        user2App.init();
     }
 
     @AfterMethod(alwaysRun = true)
@@ -53,72 +60,60 @@ public class CallTests {
 
             try {
 
-                callerApp
-                        .getUser()
-                        .takeScreenShot();
+                String screenshot =
+                        user1App
+                                .getUser()
+                                .takeScreenShot();
+
+                logger.error(
+                        "User 1 screenshot -> {}",
+                        screenshot
+                );
 
             } catch (Exception ignored) {
             }
 
             try {
 
-                calleeApp
-                        .getUser()
-                        .takeScreenShot();
+                String screenshot =
+                        user2App
+                                .getUser()
+                                .takeScreenShot();
 
-            } catch (Exception ignored) {
-            }
-        }
-
-        if (callerApp != null) {
-
-            try {
-
-                if (callerApp
-                        .getCall()
-                        .isCallOverlayVisible()) {
-
-                    callerApp
-                            .getCall()
-                            .endCall();
-                }
+                logger.error(
+                        "User 2 screenshot -> {}",
+                        screenshot
+                );
 
             } catch (Exception ignored) {
             }
         }
 
-        if (calleeApp != null) {
+        finishRemainingCall(
+                user1App,
+                "user 1"
+        );
+
+        finishRemainingCall(
+                user2App,
+                "user 2"
+        );
+
+        if (user1App != null) {
 
             try {
 
-                if (calleeApp
-                        .getCall()
-                        .isCallOverlayVisible()) {
-
-                    calleeApp
-                            .getCall()
-                            .endCall();
-                }
+                user1App.stop();
 
             } catch (Exception ignored) {
             }
         }
 
-        if (callerApp != null) {
+        if (user2App != null) {
 
             try {
 
-                callerApp.stop();
-
-            } catch (Exception ignored) {
-            }
-        }
-
-        if (calleeApp != null) {
-
-            try {
-
-                calleeApp.stop();
+                user2App.stop();
 
             } catch (Exception ignored) {
             }
@@ -126,25 +121,133 @@ public class CallTests {
     }
 
     @Test
-    public void user4321Calls1234AndHangUpAfter15Seconds() {
+    public void twoWayInternalCall() {
 
-        String callerExtension =
+        String user1Extension =
                 user1.getUsername();
 
-        String calleeExtension =
+        String user2Extension =
                 user2.getUsername();
 
-        callerApp
+        logger.info(
+                "Logging in user 1: {}",
+                user1Extension
+        );
+
+        user1App
                 .getUser()
                 .login(
                         user1
                 );
 
-        calleeApp
+        logger.info(
+                "Waiting for {} client to become ready",
+                user1Extension
+        );
+
+        user1App
+                .getCall()
+                .waitForClientReady();
+
+        logger.info(
+                "{} client is ready",
+                user1Extension
+        );
+
+        logger.info(
+                "Logging in user 2: {}",
+                user2Extension
+        );
+
+        user2App
                 .getUser()
                 .login(
                         user2
                 );
+
+        logger.info(
+                "Waiting for {} client to become ready",
+                user2Extension
+        );
+
+        user2App
+                .getCall()
+                .waitForClientReady();
+
+        logger.info(
+                "{} client is ready",
+                user2Extension
+        );
+
+        runCall(
+                user1App,
+                user2App,
+                user1Extension,
+                user2Extension
+        );
+
+        logger.info(
+                "Waiting for both clients to return to idle state"
+        );
+
+        user1App
+                .getCall()
+                .waitForClientReady();
+
+        user2App
+                .getCall()
+                .waitForClientReady();
+
+        logger.info(
+                "Both clients are ready for reverse call"
+        );
+
+        user1App
+                .getCall()
+                .pause(
+                        1500
+                );
+
+        runCall(
+                user2App,
+                user1App,
+                user2Extension,
+                user1Extension
+        );
+
+        logger.info(
+                "Two-way internal call scenario completed successfully"
+        );
+    }
+
+    private void runCall(
+            ApplicationManager callerApp,
+            ApplicationManager calleeApp,
+            String callerExtension,
+            String calleeExtension
+    ) {
+
+        Assert.assertTrue(
+                callerApp
+                        .getCall()
+                        .isClientReady(),
+                callerExtension
+                        + " is not ready to start a call"
+        );
+
+        Assert.assertTrue(
+                calleeApp
+                        .getCall()
+                        .isClientReady(),
+                calleeExtension
+                        + " is not ready to receive a call"
+        );
+
+        logger.info(
+                "{} calls {}",
+                callerExtension,
+                calleeExtension
+        );
 
         callerApp
                 .getCall()
@@ -156,9 +259,19 @@ public class CallTests {
                 .getCall()
                 .waitForOutgoingCall();
 
+        logger.info(
+                "Outgoing call detected for {}",
+                callerExtension
+        );
+
         calleeApp
                 .getCall()
                 .waitForIncomingCall();
+
+        logger.info(
+                "Incoming call detected for {}",
+                calleeExtension
+        );
 
         Assert.assertTrue(
                 calleeApp
@@ -166,6 +279,11 @@ public class CallTests {
                         .isIncomingCallVisible(),
                 "Incoming call is not visible for "
                         + calleeExtension
+        );
+
+        logger.info(
+                "{} answers the call",
+                calleeExtension
         );
 
         calleeApp
@@ -196,11 +314,22 @@ public class CallTests {
                         + calleeExtension
         );
 
+        logger.info(
+                "Call between {} and {} is active",
+                callerExtension,
+                calleeExtension
+        );
+
         callerApp
                 .getCall()
                 .pause(
                         15000
                 );
+
+        logger.info(
+                "{} ends the call",
+                callerExtension
+        );
 
         callerApp
                 .getCall()
@@ -220,104 +349,41 @@ public class CallTests {
                         .waitUntilCallFinished(),
                 "Call overlay did not disappear for "
                         + calleeExtension
+        );
+
+        logger.info(
+                "Call completed successfully: {} -> {}",
+                callerExtension,
+                calleeExtension
         );
     }
 
-    @Test
-    public void user1234Calls4321AndHangUpAfter15Seconds() {
+    private void finishRemainingCall(
+            ApplicationManager app,
+            String side
+    ) {
 
-        String callerExtension =
-                user2.getUsername();
+        if (app == null) {
+            return;
+        }
 
-        String calleeExtension =
-                user1.getUsername();
+        try {
 
-        callerApp
-                .getUser()
-                .login(
-                        user2
+            if (app
+                    .getCall()
+                    .isCallOverlayVisible()) {
+
+                logger.info(
+                        "Finishing remaining {} call",
+                        side
                 );
 
-        calleeApp
-                .getUser()
-                .login(
-                        user1
-                );
-
-        callerApp
-                .getCall()
-                .makeCallFromKeypad(
-                        calleeExtension
-                );
-
-        callerApp
-                .getCall()
-                .waitForOutgoingCall();
-
-        calleeApp
-                .getCall()
-                .waitForIncomingCall();
-
-        Assert.assertTrue(
-                calleeApp
+                app
                         .getCall()
-                        .isIncomingCallVisible(),
-                "Incoming call is not visible for "
-                        + calleeExtension
-        );
+                        .endCall();
+            }
 
-        calleeApp
-                .getCall()
-                .answerIncomingCall();
-
-        callerApp
-                .getCall()
-                .waitForActiveCall();
-
-        calleeApp
-                .getCall()
-                .waitForActiveCall();
-
-        Assert.assertTrue(
-                callerApp
-                        .getCall()
-                        .isCallActive(),
-                "Call is not active for "
-                        + callerExtension
-        );
-
-        Assert.assertTrue(
-                calleeApp
-                        .getCall()
-                        .isCallActive(),
-                "Call is not active for "
-                        + calleeExtension
-        );
-
-        callerApp
-                .getCall()
-                .pause(
-                        15000
-                );
-
-        callerApp
-                .getCall()
-                .endCall();
-
-        Assert.assertTrue(
-                callerApp
-                        .getCall()
-                        .waitUntilCallFinished(),
-                "Call overlay did not disappear for "
-                        + callerExtension
-        );
-
-        Assert.assertTrue(
-                calleeApp
-                        .getCall()
-                        .waitUntilCallFinished(),
-                "Call overlay did not disappear for "
-                        + calleeExtension
-        );
+        } catch (Exception ignored) {
+        }
     }
 }

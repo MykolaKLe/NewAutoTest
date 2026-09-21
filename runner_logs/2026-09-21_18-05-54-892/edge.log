@@ -1,0 +1,41 @@
+Starting a Gradle Daemon, 1 busy and 1 stopped Daemons could not be reused, use --status for details
+> Task :clean
+> Task :compileJava
+> Task :processResources NO-SOURCE
+> Task :classes
+> Task :compileTestJava
+> Task :processTestResources
+> Task :testClasses
+
+> Task :test
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests STANDARD_OUT
+    18:06:02.432 INFO  ringotel.tests.LoginTests - Start test loginPositiveTest with data: [User{domain='testwebsoftphone', username='4321'}]
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests STANDARD_ERROR
+    Sep 21, 2026 6:06:20 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 6:06:20 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.4234.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests > loginPositiveTest[0](User{domain='testwebsoftphone', username='4321'}) STANDARD_OUT
+    18:06:21.557 INFO  ringotel.tests.LoginTests - Starting login test for 4321
+    18:06:21.557 INFO  ringotel.tests.LoginTests - Entering domain testwebsoftphone
+    18:06:23.756 INFO  ringotel.tests.LoginTests - Domain submitted successfully
+    18:06:23.756 INFO  ringotel.tests.LoginTests - Entering credentials for 4321
+    18:06:23.892 INFO  ringotel.tests.LoginTests - Credentials entered for 4321
+    18:06:23.892 INFO  ringotel.tests.LoginTests - Clicking Log in button
+    18:06:24.979 INFO  ringotel.tests.LoginTests - Login completed for 4321
+    18:06:25.066 INFO  ringotel.tests.LoginTests - Login evidence -> J:\javaAIT\RingoAutoTest\runner_logs\2026-09-21_18-05-54-892\screenshots\screen-1790006785063-1.png
+    18:06:25.066 INFO  ringotel.tests.LoginTests - Login scenario completed successfully for 4321
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests > loginPositiveTest[0](User{domain='testwebsoftphone', username='4321'}) PASSED
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests STANDARD_OUT
+    18:06:25.068 INFO  ringotel.tests.LoginTests - PASSED: loginPositiveTest
+    18:06:25.253 INFO  ringotel.tests.LoginTests - Stop test
+    18:06:25.253 INFO  ringotel.tests.LoginTests - ******************************
+
+BUILD SUCCESSFUL in 30s
+5 actionable tasks: 5 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.0/userguide/configuration_cache_enabling.html

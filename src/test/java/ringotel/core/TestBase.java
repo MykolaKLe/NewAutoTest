@@ -15,31 +15,42 @@ public class TestBase {
     protected static ApplicationManager app;
 
     protected final Logger logger =
-            LoggerFactory.getLogger(getClass());
-
+            LoggerFactory.getLogger(
+                    getClass()
+            );
 
     @BeforeMethod
-    public void setUpTest(Method method, Object[] parameters) {
+    public void setUpTest(
+            Method method,
+            Object[] parameters
+    ) {
+
+        BaseHelper
+                .clearEvidenceContext();
 
         logger.info(
                 "Start test {} with data: {}",
                 method.getName(),
-                Arrays.asList(parameters)
-        );
-
-        app = new ApplicationManager(
-                System.getProperty(
-                        "browser",
-                        Browser.CHROME.browserName()
+                Arrays.asList(
+                        parameters
                 )
         );
+
+        app =
+                new ApplicationManager(
+                        System.getProperty(
+                                "browser",
+                                Browser.CHROME.browserName()
+                        )
+                );
 
         app.init();
     }
 
-
     @AfterMethod(alwaysRun = true)
-    public void tearDownTest(ITestResult result) {
+    public void tearDownTest(
+            ITestResult result
+    ) {
 
         try {
 
@@ -47,40 +58,79 @@ public class TestBase {
 
                 logger.info(
                         "PASSED: {}",
-                        result.getMethod().getMethodName()
+                        result
+                                .getMethod()
+                                .getMethodName()
                 );
 
             } else {
 
-                String screenshot = null;
+                String evidence =
+                        null;
+
+                String screenshot =
+                        null;
 
                 try {
 
-                    if (app != null && app.getUser() != null) {
+                    if (app != null
+                            && app.getUser() != null) {
 
-                        screenshot =
-                                app.getUser()
-                                        .takeScreenShot();
+                        evidence =
+                                app
+                                        .getUser()
+                                        .captureFailureEvidence(
+                                                getClass()
+                                                        .getSimpleName(),
+                                                result
+                                                        .getMethod()
+                                                        .getMethodName(),
+                                                result
+                                                        .getThrowable()
+                                        );
                     }
 
                 } catch (Exception e) {
 
                     logger.error(
-                            "Could not create screenshot",
+                            "Could not create failure evidence",
                             e
                     );
                 }
 
+                if (evidence == null) {
+
+                    try {
+
+                        if (app != null
+                                && app.getUser() != null) {
+
+                            screenshot =
+                                    app
+                                            .getUser()
+                                            .takeScreenShot();
+                        }
+
+                    } catch (Exception e) {
+
+                        logger.error(
+                                "Could not create screenshot",
+                                e
+                        );
+                    }
+                }
 
                 logger.error(
-                        "FAILED: {}. Screenshot -> {}",
-                        result.getMethod().getMethodName(),
+                        "FAILED: {}. Evidence -> {}. Screenshot -> {}",
+                        result
+                                .getMethod()
+                                .getMethodName(),
+                        evidence,
                         screenshot
                 );
             }
 
         } finally {
-
 
             if (app != null) {
 
@@ -97,7 +147,12 @@ public class TestBase {
                 }
             }
 
-            logger.info("Stop test");
+            BaseHelper
+                    .clearEvidenceContext();
+
+            logger.info(
+                    "Stop test"
+            );
 
             logger.info(
                     "******************************"

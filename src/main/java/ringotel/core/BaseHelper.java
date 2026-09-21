@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 
@@ -20,19 +21,30 @@ public class BaseHelper {
 
     protected WebDriverWait wait;
 
+    public BaseHelper(
+            WebDriver driver
+    ) {
 
-    public BaseHelper(WebDriver driver) {
+        this.driver =
+                driver;
 
-        this.driver = driver;
-
-        this.wait = new WebDriverWait(
-                driver,
-                Duration.ofSeconds(15)
-        );
+        this.wait =
+                new WebDriverWait(
+                        driver,
+                        Duration.ofSeconds(
+                                15
+                        )
+                );
     }
 
+    public void click(
+            By locator
+    ) {
 
-    public void click(By locator) {
+        markEvidenceAction(
+                "click",
+                locator
+        );
 
         wait.until(
                 ExpectedConditions.elementToBeClickable(
@@ -41,8 +53,15 @@ public class BaseHelper {
         ).click();
     }
 
+    public void type(
+            By locator,
+            String text
+    ) {
 
-    public void type(By locator, String text) {
+        markEvidenceAction(
+                "type",
+                locator
+        );
 
         WebElement element =
                 wait.until(
@@ -52,20 +71,33 @@ public class BaseHelper {
                 );
 
         element.click();
+
         element.clear();
-        element.sendKeys(text);
+
+        element.sendKeys(
+                text
+        );
     }
 
-
-    public boolean isElementPresent(By locator) {
+    public boolean isElementPresent(
+            By locator
+    ) {
 
         return driver
-                .findElements(locator)
+                .findElements(
+                        locator
+                )
                 .size() > 0;
     }
 
+    public WebElement waitForElement(
+            By locator
+    ) {
 
-    public WebElement waitForElement(By locator) {
+        markEvidenceAction(
+                "waitForElement",
+                locator
+        );
 
         return wait.until(
                 ExpectedConditions.visibilityOfElementLocated(
@@ -74,8 +106,14 @@ public class BaseHelper {
         );
     }
 
+    public WebElement waitForElementClickable(
+            By locator
+    ) {
 
-    public WebElement waitForElementClickable(By locator) {
+        markEvidenceAction(
+                "waitForElementClickable",
+                locator
+        );
 
         return wait.until(
                 ExpectedConditions.elementToBeClickable(
@@ -84,16 +122,53 @@ public class BaseHelper {
         );
     }
 
+    protected void markEvidenceAction(
+            String action,
+            By locator
+    ) {
 
-    public void pause(int millis) {
+        TestEvidenceCollector
+                .rememberAction(
+                        action,
+                        locator
+                );
+    }
+
+    public static void clearEvidenceContext() {
+
+        TestEvidenceCollector
+                .clearContext();
+    }
+
+    public String captureFailureEvidence(
+            String testClass,
+            String testMethod,
+            Throwable throwable
+    ) {
+
+        return TestEvidenceCollector
+                .capture(
+                        driver,
+                        testClass,
+                        testMethod,
+                        throwable
+                );
+    }
+
+    public void pause(
+            int millis
+    ) {
 
         try {
 
-            Thread.sleep(millis);
+            Thread.sleep(
+                    millis
+            );
 
         } catch (InterruptedException e) {
 
-            Thread.currentThread().interrupt();
+            Thread.currentThread()
+                    .interrupt();
 
             throw new RuntimeException(
                     "Pause was interrupted",
@@ -102,39 +177,46 @@ public class BaseHelper {
         }
     }
 
-
     public String takeScreenShot() {
 
-        File screenshotsDir =
-                new File("screenshots");
+        Path screenshotsDirectory =
+                resolveScreenshotsDirectory();
 
-        if (!screenshotsDir.exists()) {
+        try {
 
-            screenshotsDir.mkdirs();
+            Files.createDirectories(
+                    screenshotsDirectory
+            );
+
+        } catch (IOException e) {
+
+            throw new RuntimeException(
+                    "Failed to create screenshots directory",
+                    e
+            );
         }
 
-
-        File tempScreenshot =
+        File temporaryScreenshot =
                 ((TakesScreenshot) driver)
                         .getScreenshotAs(
                                 OutputType.FILE
                         );
 
-
-        File screenshot =
-                new File(
-                        screenshotsDir,
+        Path screenshot =
+                screenshotsDirectory.resolve(
                         "screen-"
                                 + System.currentTimeMillis()
+                                + "-"
+                                + Thread.currentThread()
+                                .threadId()
                                 + ".png"
                 );
-
 
         try {
 
             Files.copy(
-                    tempScreenshot.toPath(),
-                    screenshot.toPath(),
+                    temporaryScreenshot.toPath(),
+                    screenshot,
                     StandardCopyOption.REPLACE_EXISTING
             );
 
@@ -146,7 +228,29 @@ public class BaseHelper {
             );
         }
 
+        return screenshot
+                .toAbsolutePath()
+                .toString();
+    }
 
-        return screenshot.getAbsolutePath();
+    private Path resolveScreenshotsDirectory() {
+
+        String runDirectory =
+                System.getenv(
+                        "RINGOTEL_RUN_DIR"
+                );
+
+        if (runDirectory != null
+                && !runDirectory.isBlank()) {
+
+            return Path.of(
+                    runDirectory,
+                    "screenshots"
+            );
+        }
+
+        return Path.of(
+                "screenshots"
+        );
     }
 }

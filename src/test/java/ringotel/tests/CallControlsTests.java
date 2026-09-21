@@ -89,47 +89,15 @@ public class CallControlsTests {
             }
         }
 
-        if (callerApp != null) {
+        finishRemainingCall(
+                callerApp,
+                "caller"
+        );
 
-            try {
-
-                if (callerApp
-                        .getCall()
-                        .isCallOverlayVisible()) {
-
-                    logger.info(
-                            "Finishing remaining caller call"
-                    );
-
-                    callerApp
-                            .getCall()
-                            .endCall();
-                }
-
-            } catch (Exception ignored) {
-            }
-        }
-
-        if (calleeApp != null) {
-
-            try {
-
-                if (calleeApp
-                        .getCall()
-                        .isCallOverlayVisible()) {
-
-                    logger.info(
-                            "Finishing remaining callee call"
-                    );
-
-                    calleeApp
-                            .getCall()
-                            .endCall();
-                }
-
-            } catch (Exception ignored) {
-            }
-        }
+        finishRemainingCall(
+                calleeApp,
+                "callee"
+        );
 
         if (callerApp != null) {
 
@@ -161,109 +129,10 @@ public class CallControlsTests {
         String calleeExtension =
                 user2.getUsername();
 
-        logger.info(
-                "Logging in {}",
-                callerExtension
-        );
-
-        callerApp
-                .getUser()
-                .login(
-                        user1
-                );
+        loginUsersAndAnswerCall();
 
         logger.info(
-                "Logging in {}",
-                calleeExtension
-        );
-
-        calleeApp
-                .getUser()
-                .login(
-                        user2
-                );
-
-        logger.info(
-                "{} calls {}",
-                callerExtension,
-                calleeExtension
-        );
-
-        callerApp
-                .getCall()
-                .makeCallFromKeypad(
-                        calleeExtension
-                );
-
-        callerApp
-                .getCall()
-                .waitForOutgoingCall();
-
-        logger.info(
-                "Outgoing call detected for {}",
-                callerExtension
-        );
-
-        calleeApp
-                .getCall()
-                .waitForIncomingCall();
-
-        logger.info(
-                "Incoming call detected for {}",
-                calleeExtension
-        );
-
-        Assert.assertTrue(
-                calleeApp
-                        .getCall()
-                        .isIncomingCallVisible(),
-                "Incoming call is not visible for "
-                        + calleeExtension
-        );
-
-        calleeApp
-                .getCall()
-                .pause(
-                        1000
-                );
-
-        logger.info(
-                "{} answers the call",
-                calleeExtension
-        );
-
-        calleeApp
-                .getCall()
-                .answerIncomingCall();
-
-        callerApp
-                .getCall()
-                .waitForActiveCall();
-
-        calleeApp
-                .getCall()
-                .waitForActiveCall();
-
-        logger.info(
-                "Call is active for {} and {}",
-                callerExtension,
-                calleeExtension
-        );
-
-        Assert.assertTrue(
-                callerApp
-                        .getCall()
-                        .isCallActive(),
-                "Call is not active for "
-                        + callerExtension
-        );
-
-        Assert.assertTrue(
-                calleeApp
-                        .getCall()
-                        .isCallActive(),
-                "Call is not active for "
-                        + calleeExtension
+                "Checking Separate Window button"
         );
 
         Assert.assertTrue(
@@ -273,12 +142,6 @@ public class CallControlsTests {
                 "Separate window button is not available"
         );
 
-        callerApp
-                .getCall()
-                .pause(
-                        1000
-                );
-
         logger.info(
                 "Checking Hold"
         );
@@ -287,14 +150,21 @@ public class CallControlsTests {
                 .getCall()
                 .holdCall();
 
+        Assert.assertTrue(
+                callerApp
+                        .getCall()
+                        .isCallOnHold(),
+                "Call was not placed on hold"
+        );
+
         logger.info(
-                "Hold button clicked"
+                "Call is on hold"
         );
 
         callerApp
                 .getCall()
                 .pause(
-                        3000
+                        1500
                 );
 
         logger.info(
@@ -305,8 +175,15 @@ public class CallControlsTests {
                 .getCall()
                 .resumeCall();
 
+        Assert.assertFalse(
+                callerApp
+                        .getCall()
+                        .isCallOnHold(),
+                "Call remained on hold after Resume"
+        );
+
         logger.info(
-                "Resume button clicked"
+                "Call resumed successfully"
         );
 
         callerApp
@@ -464,12 +341,6 @@ public class CallControlsTests {
 
         callerApp
                 .getCall()
-                .pause(
-                        1500
-                );
-
-        callerApp
-                .getCall()
                 .closeMoreCallActions();
 
         logger.info(
@@ -508,38 +379,26 @@ public class CallControlsTests {
                 "Attended Transfer button is missing"
         );
 
-        callerApp
-                .getCall()
-                .pause(
-                        1000
-                );
-
         logger.info(
-                "Selecting first available transfer contact"
+                "Selecting first available transfer destination"
         );
 
         callerApp
                 .getCall()
                 .selectFirstTransferContact();
 
-        callerApp
-                .getCall()
-                .pause(
-                        1500
-                );
-
         Assert.assertTrue(
                 callerApp
                         .getCall()
                         .isBlindTransferEnabled(),
-                "Blind Transfer was not enabled after selecting a contact"
+                "Blind Transfer was not enabled after selecting a destination"
         );
 
         Assert.assertTrue(
                 callerApp
                         .getCall()
                         .isAttendedTransferEnabled(),
-                "Attended Transfer was not enabled after selecting a contact"
+                "Attended Transfer was not enabled after selecting a destination"
         );
 
         logger.info(
@@ -549,12 +408,6 @@ public class CallControlsTests {
         callerApp
                 .getCall()
                 .closeTransferDialog();
-
-        callerApp
-                .getCall()
-                .pause(
-                        1000
-                );
 
         logger.info(
                 "Ending call"
@@ -594,27 +447,112 @@ public class CallControlsTests {
         String calleeExtension =
                 user2.getUsername();
 
+        loginUsers();
+
         logger.info(
-                "Logging in {}",
-                callerExtension
+                "{} calls {}",
+                callerExtension,
+                calleeExtension
         );
 
         callerApp
-                .getUser()
-                .login(
-                        user1
+                .getCall()
+                .makeCallFromKeypad(
+                        calleeExtension
                 );
 
+        callerApp
+                .getCall()
+                .waitForOutgoingCall();
+
+        calleeApp
+                .getCall()
+                .waitForIncomingCall();
+
+        Assert.assertTrue(
+                calleeApp
+                        .getCall()
+                        .isIncomingCallVisible(),
+                "Incoming call is not visible for "
+                        + calleeExtension
+        );
+
         logger.info(
-                "Logging in {}",
+                "{} rejects the call",
                 calleeExtension
         );
 
         calleeApp
-                .getUser()
-                .login(
-                        user2
+                .getCall()
+                .rejectIncomingCall();
+
+        Assert.assertFalse(
+                calleeApp
+                        .getCall()
+                        .isIncomingCallVisible(),
+                "Incoming call remained visible for "
+                        + calleeExtension
+                        + " after Reject"
+        );
+
+        logger.info(
+                "Incoming call was rejected by {}",
+                calleeExtension
+        );
+
+        callerApp
+                .getCall()
+                .pause(
+                        3000
                 );
+
+        if (callerApp
+                .getCall()
+                .isCallOverlayVisible()) {
+
+            logger.info(
+                    "Call remains visible for {} after Reject",
+                    callerExtension
+            );
+
+            logger.info(
+                    "Ending remaining caller call"
+            );
+
+            callerApp
+                    .getCall()
+                    .endCall();
+
+            Assert.assertTrue(
+                    callerApp
+                            .getCall()
+                            .waitUntilCallFinished(),
+                    "Remaining call could not be finished for "
+                            + callerExtension
+            );
+
+        } else {
+
+            logger.info(
+                    "Call finished automatically for {} after Reject",
+                    callerExtension
+            );
+        }
+
+        logger.info(
+                "Reject incoming call scenario completed successfully"
+        );
+    }
+
+    private void loginUsersAndAnswerCall() {
+
+        String callerExtension =
+                user1.getUsername();
+
+        String calleeExtension =
+                user2.getUsername();
+
+        loginUsers();
 
         logger.info(
                 "{} calls {}",
@@ -654,82 +592,131 @@ public class CallControlsTests {
                         + calleeExtension
         );
 
+        logger.info(
+                "{} answers the call",
+                calleeExtension
+        );
+
         calleeApp
                 .getCall()
-                .pause(
-                        1000
+                .answerIncomingCall();
+
+        callerApp
+                .getCall()
+                .waitForActiveCall();
+
+        calleeApp
+                .getCall()
+                .waitForActiveCall();
+
+        Assert.assertTrue(
+                callerApp
+                        .getCall()
+                        .isCallActive(),
+                "Call is not active for "
+                        + callerExtension
+        );
+
+        Assert.assertTrue(
+                calleeApp
+                        .getCall()
+                        .isCallActive(),
+                "Call is not active for "
+                        + calleeExtension
+        );
+
+        logger.info(
+                "Call is active for {} and {}",
+                callerExtension,
+                calleeExtension
+        );
+    }
+
+    private void loginUsers() {
+
+        String callerExtension =
+                user1.getUsername();
+
+        String calleeExtension =
+                user2.getUsername();
+
+        logger.info(
+                "Logging in caller {}",
+                callerExtension
+        );
+
+        callerApp
+                .getUser()
+                .login(
+                        user1
                 );
 
         logger.info(
-                "{} rejects the call",
-                calleeExtension
-        );
-
-        calleeApp
-                .getCall()
-                .rejectIncomingCall();
-
-        Assert.assertFalse(
-                calleeApp
-                        .getCall()
-                        .isIncomingCallVisible(),
-                "Incoming call remained visible for "
-                        + calleeExtension
-                        + " after Reject"
-        );
-
-        logger.info(
-                "Incoming call was successfully rejected by {}",
-                calleeExtension
+                "Waiting for caller {} client readiness",
+                callerExtension
         );
 
         callerApp
                 .getCall()
-                .pause(
-                        3000
-                );
-
-        if (callerApp
-                .getCall()
-                .isCallOverlayVisible()) {
-
-            logger.info(
-                    "Call is still visible for {} after Reject, possibly because it continued to voicemail",
-                    callerExtension
-            );
-
-            logger.info(
-                    "Ending remaining call for {}",
-                    callerExtension
-            );
-
-            callerApp
-                    .getCall()
-                    .endCall();
-
-            Assert.assertTrue(
-                    callerApp
-                            .getCall()
-                            .waitUntilCallFinished(),
-                    "Remaining call could not be finished for "
-                            + callerExtension
-            );
-
-            logger.info(
-                    "Remaining call for {} was finished",
-                    callerExtension
-            );
-
-        } else {
-
-            logger.info(
-                    "Call finished automatically for {} after Reject",
-                    callerExtension
-            );
-        }
+                .waitForClientReady();
 
         logger.info(
-                "Reject incoming call scenario completed successfully"
+                "Caller {} client is ready",
+                callerExtension
         );
+
+        logger.info(
+                "Logging in callee {}",
+                calleeExtension
+        );
+
+        calleeApp
+                .getUser()
+                .login(
+                        user2
+                );
+
+        logger.info(
+                "Waiting for callee {} client readiness",
+                calleeExtension
+        );
+
+        calleeApp
+                .getCall()
+                .waitForClientReady();
+
+        logger.info(
+                "Callee {} client is ready",
+                calleeExtension
+        );
+    }
+
+    private void finishRemainingCall(
+            ApplicationManager app,
+            String side
+    ) {
+
+        if (app == null) {
+            return;
+        }
+
+        try {
+
+            if (app
+                    .getCall()
+                    .isCallOverlayVisible()) {
+
+                logger.info(
+                        "Finishing remaining {} call",
+                        side
+                );
+
+                app
+                        .getCall()
+                        .endCall();
+            }
+
+        } catch (Exception ignored) {
+        }
     }
 }

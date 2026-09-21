@@ -1,0 +1,537 @@
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+> Task :clean
+> Task :compileJava
+> Task :processResources NO-SOURCE
+> Task :classes
+> Task :compileTestJava
+> Task :processTestResources
+> Task :testClasses
+
+> Task :test
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests STANDARD_ERROR
+    Sep 21, 2026 4:31:24 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:31:24 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Sep 21, 2026 4:31:25 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:31:25 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests > answerCallAndCheckCallControls STANDARD_OUT
+    16:31:25.777 INFO  ringotel.tests.CallControlsTests - Logging in caller 4321
+    16:31:28.680 INFO  ringotel.tests.CallControlsTests - Logging in callee 1234
+    16:31:31.538 INFO  ringotel.tests.CallControlsTests - 4321 calls 1234
+    16:31:34.040 INFO  ringotel.tests.CallControlsTests - Outgoing call detected for 4321
+    16:31:35.077 INFO  ringotel.tests.CallControlsTests - Incoming call detected for 1234
+    16:31:36.092 INFO  ringotel.tests.CallControlsTests - 1234 answers the call
+    16:31:38.157 INFO  ringotel.tests.CallControlsTests - Call is active for 4321 and 1234
+    16:31:38.157 INFO  ringotel.tests.CallControlsTests - Checking Separate Window button
+    16:31:38.168 INFO  ringotel.tests.CallControlsTests - Checking Hold
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests > answerCallAndCheckCallControls FAILED
+    org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.cssSelector: button[data-call-control='control'][aria-label^='Resume call with '], but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"button[data-call-control='control'][aria-label^='Resume call with ']"}.
+    (tried for 15 seconds with 500 milliseconds interval)
+    Build info: version: '4.40.0', revision: 'b3333f1'
+    System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.12'
+    Driver info: org.openqa.selenium.chrome.ChromeDriver
+    Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 153.0.8010.48, chrome: {chromedriverVersion: 153.0.8010.52 (78e5e45d4bb4..., userDataDir: C:\Users\miste\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58122}, goog:processID: 28184, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58122/devtoo..., se:cdpVersion: 153.0.8010.48, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+    Session ID: 43596e1e24bd386fb962e4e1b80d6c06
+        at app//org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+        at app//org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+        at app//ringotel.fw.CallHelper.holdCall(CallHelper.java:409)
+        at app//ringotel.tests.CallControlsTests.answerCallAndCheckCallControls(CallControlsTests.java:151)
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests STANDARD_OUT
+    16:31:53.624 ERROR ringotel.tests.CallControlsTests - Caller screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001113622.png
+    16:31:53.686 ERROR ringotel.tests.CallControlsTests - Callee screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001113686.png
+    16:31:53.695 INFO  ringotel.tests.CallControlsTests - Finishing remaining caller call
+    16:31:53.739 INFO  ringotel.tests.CallControlsTests - Finishing remaining callee call
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests STANDARD_ERROR
+    Sep 21, 2026 4:31:54 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:31:54 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Sep 21, 2026 4:31:55 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:31:55 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests > rejectIncomingCall STANDARD_OUT
+    16:31:55.993 INFO  ringotel.tests.CallControlsTests - Logging in caller 4321
+    16:31:58.874 INFO  ringotel.tests.CallControlsTests - Logging in callee 1234
+    16:32:01.752 INFO  ringotel.tests.CallControlsTests - 4321 calls 1234
+    16:32:05.242 INFO  ringotel.tests.CallControlsTests - 1234 rejects the call
+    16:32:05.286 INFO  ringotel.tests.CallControlsTests - Incoming call was rejected by 1234
+    16:32:08.304 INFO  ringotel.tests.CallControlsTests - Call remains visible for 4321 after Reject
+    16:32:08.304 INFO  ringotel.tests.CallControlsTests - Ending remaining caller call
+    16:32:08.348 INFO  ringotel.tests.CallControlsTests - Reject incoming call scenario completed successfully
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests > rejectIncomingCall PASSED
+
+Gradle suite > Gradle test > ringotel.tests.CallTests STANDARD_ERROR
+    Sep 21, 2026 4:32:09 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:32:09 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Sep 21, 2026 4:32:09 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:32:09 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.CallTests > user1CallsUser2AndHangUpAfter15Seconds STANDARD_OUT
+    16:32:10.329 INFO  ringotel.tests.CallTests - Logging in caller 4321
+    16:32:13.190 INFO  ringotel.tests.CallTests - Caller 4321 logged in
+    16:32:13.190 INFO  ringotel.tests.CallTests - Logging in callee 1234
+    16:32:16.035 INFO  ringotel.tests.CallTests - Callee 1234 logged in
+    16:32:16.036 INFO  ringotel.tests.CallTests - 4321 calls 1234
+    16:32:18.467 INFO  ringotel.tests.CallTests - Outgoing call detected for 4321
+    16:32:19.497 INFO  ringotel.tests.CallTests - Incoming call detected for 1234
+    16:32:19.506 INFO  ringotel.tests.CallTests - 1234 answers the call
+    16:32:22.572 INFO  ringotel.tests.CallTests - Call between 4321 and 1234 is active
+    16:32:22.573 INFO  ringotel.tests.CallTests - Keeping call active for 15 seconds
+    16:32:37.574 INFO  ringotel.tests.CallTests - 4321 ends the call
+    16:32:39.172 INFO  ringotel.tests.CallTests - Call scenario completed successfully: 4321 -> 1234
+
+Gradle suite > Gradle test > ringotel.tests.CallTests > user1CallsUser2AndHangUpAfter15Seconds PASSED
+
+Gradle suite > Gradle test > ringotel.tests.CallTests STANDARD_ERROR
+    Sep 21, 2026 4:32:40 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:32:40 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Sep 21, 2026 4:32:41 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:32:41 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.CallTests > user2CallsUser1AndHangUpAfter15Seconds STANDARD_OUT
+    16:32:42.122 INFO  ringotel.tests.CallTests - Logging in caller 1234
+    16:32:44.966 INFO  ringotel.tests.CallTests - Caller 1234 logged in
+    16:32:44.967 INFO  ringotel.tests.CallTests - Logging in callee 4321
+    16:32:47.809 INFO  ringotel.tests.CallTests - Callee 4321 logged in
+    16:32:47.809 INFO  ringotel.tests.CallTests - 1234 calls 4321
+    16:32:50.274 INFO  ringotel.tests.CallTests - Outgoing call detected for 1234
+
+Gradle suite > Gradle test > ringotel.tests.CallTests > user2CallsUser1AndHangUpAfter15Seconds FAILED
+    org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.cssSelector: [data-call-overlay='frame'][data-state='ringing'], but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"[data-call-overlay='frame'][data-state='ringing']"}.
+    (tried for 25 seconds with 500 milliseconds interval)
+    Build info: version: '4.40.0', revision: 'b3333f1'
+    System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.12'
+    Driver info: org.openqa.selenium.chrome.ChromeDriver
+    Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 153.0.8010.48, chrome: {chromedriverVersion: 153.0.8010.52 (78e5e45d4bb4..., userDataDir: C:\Users\miste\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54495}, goog:processID: 31756, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54495/devtoo..., se:cdpVersion: 153.0.8010.48, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+    Session ID: 3247d3ee8e4f5e131a59566c6bb2024e
+        at app//org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+        at app//org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+        at app//ringotel.fw.CallHelper.waitForIncomingCall(CallHelper.java:313)
+        at app//ringotel.tests.CallTests.runCallScenario(CallTests.java:207)
+        at app//ringotel.tests.CallTests.user2CallsUser1AndHangUpAfter15Seconds(CallTests.java:135)
+
+Gradle suite > Gradle test > ringotel.tests.CallTests STANDARD_OUT
+    16:33:15.478 ERROR ringotel.tests.CallTests - Caller screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001195477.png
+    16:33:15.531 ERROR ringotel.tests.CallTests - Callee screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001195531.png
+    16:33:15.539 INFO  ringotel.tests.CallTests - Finishing remaining caller call
+
+Gradle suite > Gradle test > ringotel.tests.ChatCleanupTests STANDARD_OUT
+    16:33:15.921 INFO  ringotel.tests.ChatCleanupTests - Start test deleteAllChats with data: []
+
+Gradle suite > Gradle test > ringotel.tests.ChatCleanupTests STANDARD_ERROR
+    Sep 21, 2026 4:33:16 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:33:16 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.ChatCleanupTests > deleteAllChats STANDARD_OUT
+    16:33:20.630 INFO  ringotel.tests.ChatCleanupTests - Chats before cleanup: 0
+    16:33:20.638 INFO  ringotel.tests.ChatCleanupTests - Chat cleanup completed. Initial: 0, deleted: 0, remaining: 0
+
+Gradle suite > Gradle test > ringotel.tests.ChatCleanupTests > deleteAllChats PASSED
+
+Gradle suite > Gradle test > ringotel.tests.ChatCleanupTests STANDARD_OUT
+    16:33:20.639 INFO  ringotel.tests.ChatCleanupTests - PASSED: deleteAllChats
+    16:33:20.812 INFO  ringotel.tests.ChatCleanupTests - Stop test
+    16:33:20.812 INFO  ringotel.tests.ChatCleanupTests - ******************************
+
+Gradle suite > Gradle test > ringotel.tests.ChatTests STANDARD_OUT
+    16:33:20.813 INFO  ringotel.tests.ChatTests - Start test sendChatMessage with data: []
+
+Gradle suite > Gradle test > ringotel.tests.ChatTests STANDARD_ERROR
+    Sep 21, 2026 4:33:21 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:33:21 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.ChatTests > sendChatMessage STANDARD_OUT
+    16:33:21.859 INFO  ringotel.tests.ChatTests - Chat scenario started
+    16:33:21.859 INFO  ringotel.tests.ChatTests - Mode: TARGETED
+    16:33:21.859 INFO  ringotel.tests.ChatTests - Recipient: Mykola
+    16:33:21.859 INFO  ringotel.tests.ChatTests - Delete chat after send: true
+    16:33:21.859 INFO  ringotel.tests.ChatTests - Logging in 4321
+    16:33:25.191 INFO  ringotel.tests.ChatTests - 4321 logged in successfully
+    16:33:25.191 INFO  ringotel.tests.ChatTests - Opening targeted recipient 'Mykola' occurrence 1
+    16:33:26.519 INFO  ringotel.tests.ChatTests - Messaging is available for 'Mykola'
+    16:33:26.519 INFO  ringotel.tests.ChatTests - Sending message to 'Mykola': AutoTest 1790001201859
+    16:33:26.609 INFO  ringotel.tests.ChatTests - Message sent
+    16:33:26.618 INFO  ringotel.tests.ChatTests - Message verified
+    16:33:26.634 INFO  ringotel.tests.ChatTests - Active chat id: 1790000783237-5859d8bc680b1fc4ce
+    16:33:26.635 INFO  ringotel.tests.ChatTests - Deleting chat with 'Mykola'
+    16:33:27.437 INFO  ringotel.tests.ChatTests - Chat deleted successfully. Chat id: 1790000783237-5859d8bc680b1fc4ce
+    16:33:27.440 INFO  ringotel.tests.ChatTests - Chat scenario completed successfully for 'Mykola'
+
+Gradle suite > Gradle test > ringotel.tests.ChatTests > sendChatMessage PASSED
+
+Gradle suite > Gradle test > ringotel.tests.ChatTests STANDARD_OUT
+    16:33:27.441 INFO  ringotel.tests.ChatTests - PASSED: sendChatMessage
+    16:33:27.609 INFO  ringotel.tests.ChatTests - Stop test
+    16:33:27.609 INFO  ringotel.tests.ChatTests - ******************************
+
+Gradle suite > Gradle test > ringotel.tests.ContactMessagingAuditTests STANDARD_OUT
+    16:33:27.610 INFO  r.tests.ContactMessagingAuditTests - Start test checkMessagingAvailabilityForAllContacts with data: []
+
+Gradle suite > Gradle test > ringotel.tests.ContactMessagingAuditTests STANDARD_ERROR
+    Sep 21, 2026 4:33:27 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:33:27 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.ContactMessagingAuditTests > checkMessagingAvailabilityForAllContacts STANDARD_OUT
+    16:33:29.011 INFO  r.tests.ContactMessagingAuditTests - CONTACTS ONLY messaging audit started
+    16:33:29.011 INFO  r.tests.ContactMessagingAuditTests - Logging in 4321
+    16:33:32.329 INFO  r.tests.ContactMessagingAuditTests - 4321 logged in successfully
+    16:33:32.330 INFO  r.tests.ContactMessagingAuditTests - Opening Contacts
+    16:33:33.597 INFO  r.tests.ContactMessagingAuditTests - Contacts opened and expanded
+    16:33:33.597 INFO  r.tests.ContactMessagingAuditTests - Contacts found for messaging audit: 40
+    16:33:33.598 INFO  r.tests.ContactMessagingAuditTests - Contact '￼￼￼testcontact￼￼' occurrence 1 - PHONE NUMBER PRESENT
+    16:33:33.598 INFO  r.tests.ContactMessagingAuditTests - Opening contact '￼￼￼testcontact￼￼' occurrence 1
+    16:33:34.510 INFO  r.tests.ContactMessagingAuditTests - Contact '￼￼￼testcontact￼￼' opened
+    16:33:36.551 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for '￼￼￼testcontact￼￼' - PHONE NUMBER PRESENT
+    16:33:36.551 INFO  r.tests.ContactMessagingAuditTests - Contact 'aaa-test,,,test' occurrence 1 - PHONE NUMBER PRESENT
+    16:33:36.551 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'aaa-test,,,test' occurrence 1
+    16:33:37.483 INFO  r.tests.ContactMessagingAuditTests - Contact 'aaa-test,,,test' opened
+    16:33:39.535 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'aaa-test,,,test' - PHONE NUMBER PRESENT
+    16:33:39.535 INFO  r.tests.ContactMessagingAuditTests - Contact 'Adrian Johnson' occurrence 1 - PHONE NUMBER PRESENT
+    16:33:39.535 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Adrian Johnson' occurrence 1
+    16:33:40.451 INFO  r.tests.ContactMessagingAuditTests - Contact 'Adrian Johnson' opened
+    16:33:42.515 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Adrian Johnson' - PHONE NUMBER PRESENT
+    16:33:42.516 INFO  r.tests.ContactMessagingAuditTests - Contact 'Alli' occurrence 1 - PHONE NUMBER PRESENT
+    16:33:42.516 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Alli' occurrence 1
+    16:33:43.547 INFO  r.tests.ContactMessagingAuditTests - Contact 'Alli' opened
+    16:33:45.588 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Alli' - PHONE NUMBER PRESENT
+    16:33:45.588 INFO  r.tests.ContactMessagingAuditTests - Contact 'Anatolii Kamorda' occurrence 1 - NO PHONE NUMBER
+    16:33:45.588 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Anatolii Kamorda' occurrence 1
+    16:33:46.585 INFO  r.tests.ContactMessagingAuditTests - Contact 'Anatolii Kamorda' opened
+    16:33:48.642 INFO  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Anatolii Kamorda' - NO PHONE NUMBER
+    16:33:48.642 INFO  r.tests.ContactMessagingAuditTests - Contact 'AutoTest 1789991975209' occurrence 1 - PHONE NUMBER PRESENT
+    16:33:48.642 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'AutoTest 1789991975209' occurrence 1
+    16:33:49.629 INFO  r.tests.ContactMessagingAuditTests - Contact 'AutoTest 1789991975209' opened
+    16:33:51.679 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'AutoTest 1789991975209' - PHONE NUMBER PRESENT
+    16:33:51.679 INFO  r.tests.ContactMessagingAuditTests - Contact 'Bethy Guttman' occurrence 1 - PHONE NUMBER PRESENT
+    16:33:51.679 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Bethy Guttman' occurrence 1
+    16:33:52.649 INFO  r.tests.ContactMessagingAuditTests - Contact 'Bethy Guttman' opened
+    16:33:54.708 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Bethy Guttman' - PHONE NUMBER PRESENT
+    16:33:54.709 INFO  r.tests.ContactMessagingAuditTests - Contact 'Chana Retter' occurrence 1 - PHONE NUMBER PRESENT
+    16:33:54.709 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Chana Retter' occurrence 1
+    16:33:55.681 INFO  r.tests.ContactMessagingAuditTests - Contact 'Chana Retter' opened
+    16:33:57.738 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Chana Retter' - PHONE NUMBER PRESENT
+    16:33:57.738 INFO  r.tests.ContactMessagingAuditTests - Contact 'Chaya Monderer' occurrence 1 - PHONE NUMBER PRESENT
+    16:33:57.738 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Chaya Monderer' occurrence 1
+    16:33:58.728 INFO  r.tests.ContactMessagingAuditTests - Contact 'Chaya Monderer' opened
+    16:34:00.790 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Chaya Monderer' - PHONE NUMBER PRESENT
+    16:34:00.790 INFO  r.tests.ContactMessagingAuditTests - Contact 'Ð¢ÐµÑÑ231' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:00.790 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Ð¢ÐµÑÑ231' occurrence 1
+    16:34:01.779 INFO  r.tests.ContactMessagingAuditTests - Contact 'Ð¢ÐµÑÑ231' opened
+    16:34:03.844 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Ð¢ÐµÑÑ231' - PHONE NUMBER PRESENT
+    16:34:03.844 INFO  r.tests.ContactMessagingAuditTests - Contact 'Devora Adler' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:03.844 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Devora Adler' occurrence 1
+    16:34:04.832 INFO  r.tests.ContactMessagingAuditTests - Contact 'Devora Adler' opened
+    16:34:06.890 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Devora Adler' - PHONE NUMBER PRESENT
+    16:34:06.891 INFO  r.tests.ContactMessagingAuditTests - Contact 'Devory Rayman' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:06.891 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Devory Rayman' occurrence 1
+    16:34:07.862 INFO  r.tests.ContactMessagingAuditTests - Contact 'Devory Rayman' opened
+    16:34:09.924 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Devory Rayman' - PHONE NUMBER PRESENT
+    16:34:09.924 INFO  r.tests.ContactMessagingAuditTests - Contact 'Dispatcher - Dubie Heyman' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:09.924 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Dispatcher - Dubie Heyman' occurrence 1
+    16:34:10.880 INFO  r.tests.ContactMessagingAuditTests - Contact 'Dispatcher - Dubie Heyman' opened
+    16:34:12.926 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Dispatcher - Dubie Heyman' - PHONE NUMBER PRESENT
+    16:34:12.926 INFO  r.tests.ContactMessagingAuditTests - Contact 'Dispatcher - Eli Dinermann' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:12.926 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Dispatcher - Eli Dinermann' occurrence 1
+    16:34:13.875 INFO  r.tests.ContactMessagingAuditTests - Contact 'Dispatcher - Eli Dinermann' opened
+    16:34:15.921 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Dispatcher - Eli Dinermann' - PHONE NUMBER PRESENT
+    16:34:15.921 INFO  r.tests.ContactMessagingAuditTests - Contact 'Dispatcher - Elimelech Goldstein' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:15.921 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Dispatcher - Elimelech Goldstein' occurrence 1
+    16:34:16.900 INFO  r.tests.ContactMessagingAuditTests - Contact 'Dispatcher - Elimelech Goldstein' opened
+    16:34:18.967 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Dispatcher - Elimelech Goldstein' - PHONE NUMBER PRESENT
+    16:34:18.967 INFO  r.tests.ContactMessagingAuditTests - Contact 'Dispatcher - Tzvi Pancer' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:18.967 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Dispatcher - Tzvi Pancer' occurrence 1
+    16:34:19.978 INFO  r.tests.ContactMessagingAuditTests - Contact 'Dispatcher - Tzvi Pancer' opened
+    16:34:22.015 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Dispatcher - Tzvi Pancer' - PHONE NUMBER PRESENT
+    16:34:22.015 INFO  r.tests.ContactMessagingAuditTests - Contact 'Dubie Heyman' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:22.016 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Dubie Heyman' occurrence 1
+    16:34:22.934 INFO  r.tests.ContactMessagingAuditTests - Contact 'Dubie Heyman' opened
+    16:34:24.986 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Dubie Heyman' - PHONE NUMBER PRESENT
+    16:34:24.987 INFO  r.tests.ContactMessagingAuditTests - Contact 'Hatzalah Offf' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:24.987 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Hatzalah Offf' occurrence 1
+    16:34:25.939 INFO  r.tests.ContactMessagingAuditTests - Contact 'Hatzalah Offf' opened
+    16:34:27.976 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Hatzalah Offf' - PHONE NUMBER PRESENT
+    16:34:27.976 INFO  r.tests.ContactMessagingAuditTests - Contact 'Johnston' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:27.976 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Johnston' occurrence 1
+    16:34:28.940 INFO  r.tests.ContactMessagingAuditTests - Contact 'Johnston' opened
+    16:34:30.985 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Johnston' - PHONE NUMBER PRESENT
+    16:34:30.985 INFO  r.tests.ContactMessagingAuditTests - Contact 'Leah Horowitz' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:30.985 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Leah Horowitz' occurrence 1
+    16:34:31.938 INFO  r.tests.ContactMessagingAuditTests - Contact 'Leah Horowitz' opened
+    16:34:33.989 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Leah Horowitz' - PHONE NUMBER PRESENT
+    16:34:33.990 INFO  r.tests.ContactMessagingAuditTests - Contact 'Leah Pinck' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:33.990 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Leah Pinck' occurrence 1
+    16:34:39.624 INFO  r.tests.ContactMessagingAuditTests - Contact 'Leah Pinck' opened
+    16:34:41.663 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Leah Pinck' - PHONE NUMBER PRESENT
+    16:34:41.663 INFO  r.tests.ContactMessagingAuditTests - Contact 'Lieba Tesser' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:41.663 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Lieba Tesser' occurrence 1
+    16:34:42.588 INFO  r.tests.ContactMessagingAuditTests - Contact 'Lieba Tesser' opened
+    16:34:44.648 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Lieba Tesser' - PHONE NUMBER PRESENT
+    16:34:44.648 INFO  r.tests.ContactMessagingAuditTests - Contact 'Manny Topper' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:44.648 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Manny Topper' occurrence 1
+    16:34:45.620 INFO  r.tests.ContactMessagingAuditTests - Contact 'Manny Topper' opened
+    16:34:47.679 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Manny Topper' - PHONE NUMBER PRESENT
+    16:34:47.679 INFO  r.tests.ContactMessagingAuditTests - Contact 'max' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:47.679 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'max' occurrence 1
+    16:34:48.618 INFO  r.tests.ContactMessagingAuditTests - Contact 'max' opened
+    16:34:50.660 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'max' - PHONE NUMBER PRESENT
+    16:34:50.661 INFO  r.tests.ContactMessagingAuditTests - Contact 'MedDir - Elimelech Goldstein' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:50.661 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'MedDir - Elimelech Goldstein' occurrence 1
+    16:34:51.631 INFO  r.tests.ContactMessagingAuditTests - Contact 'MedDir - Elimelech Goldstein' opened
+    16:34:53.687 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'MedDir - Elimelech Goldstein' - PHONE NUMBER PRESENT
+    16:34:53.688 INFO  r.tests.ContactMessagingAuditTests - Contact 'MedDir - Shaya Lerner' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:53.688 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'MedDir - Shaya Lerner' occurrence 1
+    16:34:54.643 INFO  r.tests.ContactMessagingAuditTests - Contact 'MedDir - Shaya Lerner' opened
+    16:34:56.697 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'MedDir - Shaya Lerner' - PHONE NUMBER PRESENT
+    16:34:56.697 INFO  r.tests.ContactMessagingAuditTests - Contact 'MedDir - Yona Abraham' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:56.697 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'MedDir - Yona Abraham' occurrence 1
+    16:34:57.653 INFO  r.tests.ContactMessagingAuditTests - Contact 'MedDir - Yona Abraham' opened
+    16:34:59.707 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'MedDir - Yona Abraham' - PHONE NUMBER PRESENT
+    16:34:59.707 INFO  r.tests.ContactMessagingAuditTests - Contact 'MedDir - Yosef Levenbrown' occurrence 1 - PHONE NUMBER PRESENT
+    16:34:59.707 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'MedDir - Yosef Levenbrown' occurrence 1
+    16:35:00.666 INFO  r.tests.ContactMessagingAuditTests - Contact 'MedDir - Yosef Levenbrown' opened
+    16:35:02.715 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'MedDir - Yosef Levenbrown' - PHONE NUMBER PRESENT
+    16:35:02.716 INFO  r.tests.ContactMessagingAuditTests - Contact 'Meira Simanowitz' occurrence 1 - PHONE NUMBER PRESENT
+    16:35:02.716 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Meira Simanowitz' occurrence 1
+    16:35:03.692 INFO  r.tests.ContactMessagingAuditTests - Contact 'Meira Simanowitz' opened
+    16:35:05.751 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Meira Simanowitz' - PHONE NUMBER PRESENT
+    16:35:05.751 INFO  r.tests.ContactMessagingAuditTests - Contact 'Michael' occurrence 1 - NO PHONE NUMBER
+    16:35:05.751 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Michael' occurrence 1
+    16:35:06.679 INFO  r.tests.ContactMessagingAuditTests - Contact 'Michael' opened
+    16:35:08.735 INFO  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Michael' - NO PHONE NUMBER
+    16:35:08.735 INFO  r.tests.ContactMessagingAuditTests - Contact 'Michael' occurrence 2 - PHONE NUMBER PRESENT
+    16:35:08.735 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Michael' occurrence 2
+    16:35:09.196 INFO  r.tests.ContactMessagingAuditTests - Contact 'Michael' opened
+    16:35:11.258 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Michael' - PHONE NUMBER PRESENT
+    16:35:11.258 INFO  r.tests.ContactMessagingAuditTests - Contact 'Miriam Hirsch' occurrence 1 - PHONE NUMBER PRESENT
+    16:35:11.258 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Miriam Hirsch' occurrence 1
+    16:35:12.247 INFO  r.tests.ContactMessagingAuditTests - Contact 'Miriam Hirsch' opened
+    16:35:14.293 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Miriam Hirsch' - PHONE NUMBER PRESENT
+    16:35:14.293 INFO  r.tests.ContactMessagingAuditTests - Contact 'Miriam Jacoby' occurrence 1 - PHONE NUMBER PRESENT
+    16:35:14.293 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Miriam Jacoby' occurrence 1
+    16:35:15.210 INFO  r.tests.ContactMessagingAuditTests - Contact 'Miriam Jacoby' opened
+    16:35:17.263 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Miriam Jacoby' - PHONE NUMBER PRESENT
+    16:35:17.263 INFO  r.tests.ContactMessagingAuditTests - Contact 'Racheli Meister' occurrence 1 - PHONE NUMBER PRESENT
+    16:35:17.263 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Racheli Meister' occurrence 1
+    16:35:18.203 INFO  r.tests.ContactMessagingAuditTests - Contact 'Racheli Meister' opened
+    16:35:20.260 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Racheli Meister' - PHONE NUMBER PRESENT
+    16:35:20.260 INFO  r.tests.ContactMessagingAuditTests - Contact 'Rivkah Horowitz' occurrence 1 - PHONE NUMBER PRESENT
+    16:35:20.260 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Rivkah Horowitz' occurrence 1
+    16:35:21.164 INFO  r.tests.ContactMessagingAuditTests - Contact 'Rivkah Horowitz' opened
+    16:35:23.210 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Rivkah Horowitz' - PHONE NUMBER PRESENT
+    16:35:23.210 INFO  r.tests.ContactMessagingAuditTests - Contact 'Sara Rochel Barrer' occurrence 1 - PHONE NUMBER PRESENT
+    16:35:23.210 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Sara Rochel Barrer' occurrence 1
+    16:35:24.135 INFO  r.tests.ContactMessagingAuditTests - Contact 'Sara Rochel Barrer' opened
+    16:35:26.176 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Sara Rochel Barrer' - PHONE NUMBER PRESENT
+    16:35:26.176 INFO  r.tests.ContactMessagingAuditTests - Contact 'Spare 3' occurrence 1 - PHONE NUMBER PRESENT
+    16:35:26.176 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Spare 3' occurrence 1
+    16:35:27.097 INFO  r.tests.ContactMessagingAuditTests - Contact 'Spare 3' opened
+    16:35:29.160 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Spare 3' - PHONE NUMBER PRESENT
+    16:35:29.160 INFO  r.tests.ContactMessagingAuditTests - Contact 'Spare 4' occurrence 1 - PHONE NUMBER PRESENT
+    16:35:29.160 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Spare 4' occurrence 1
+    16:35:30.116 INFO  r.tests.ContactMessagingAuditTests - Contact 'Spare 4' opened
+    16:35:32.177 WARN  r.tests.ContactMessagingAuditTests - Messaging UNAVAILABLE for 'Spare 4' - PHONE NUMBER PRESENT
+    16:35:32.177 INFO  r.tests.ContactMessagingAuditTests - Contact 'Tango' occurrence 1 - PHONE NUMBER PRESENT
+    16:35:32.177 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Tango' occurrence 1
+    16:35:47.722 WARN  r.tests.ContactMessagingAuditTests - Could not open contact 'Tango' occurrence 1
+    16:35:47.844 WARN  r.tests.ContactMessagingAuditTests - Contact opening evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001347844.png
+    16:35:47.845 INFO  r.tests.ContactMessagingAuditTests - Contact 'Test group CH' occurrence 1 - PHONE NUMBER PRESENT
+    16:35:47.845 INFO  r.tests.ContactMessagingAuditTests - Opening contact 'Test group CH' occurrence 1
+    16:36:03.444 WARN  r.tests.ContactMessagingAuditTests - Could not open contact 'Test group CH' occurrence 1
+    16:36:03.556 WARN  r.tests.ContactMessagingAuditTests - Contact opening evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001363555.png
+    16:36:03.556 INFO  r.tests.ContactMessagingAuditTests - ========================================
+    16:36:03.556 INFO  r.tests.ContactMessagingAuditTests - Messaging audit completed for user 4321
+    16:36:03.556 INFO  r.tests.ContactMessagingAuditTests - Total contacts: 40
+    16:36:03.556 INFO  r.tests.ContactMessagingAuditTests - With phone number: 38
+    16:36:03.556 INFO  r.tests.ContactMessagingAuditTests - Without phone number: 2
+    16:36:03.556 INFO  r.tests.ContactMessagingAuditTests - Messaging available: 0
+    16:36:03.556 INFO  r.tests.ContactMessagingAuditTests - Messaging unavailable: 38
+    16:36:03.556 INFO  r.tests.ContactMessagingAuditTests - Failed to open: 2
+    16:36:03.556 INFO  r.tests.ContactMessagingAuditTests - NO PHONE NUMBER contacts: [Anatolii Kamorda #1, Michael #1]
+    16:36:03.556 WARN  r.tests.ContactMessagingAuditTests - Messaging unavailable contacts: [￼￼￼testcontact￼￼ #1, aaa-test,,,test #1, Adrian Johnson #1, Alli #1, Anatolii Kamorda #1, AutoTest 1789991975209 #1, Bethy Guttman #1, Chana Retter #1, Chaya Monderer #1, Ð¢ÐµÑÑ231 #1, Devora Adler #1, Devory Rayman #1, Dispatcher - Dubie Heyman #1, Dispatcher - Eli Dinermann #1, Dispatcher - Elimelech Goldstein #1, Dispatcher - Tzvi Pancer #1, Dubie Heyman #1, Hatzalah Offf #1, Johnston #1, Leah Horowitz #1, Leah Pinck #1, Lieba Tesser #1, Manny Topper #1, max #1, MedDir - Elimelech Goldstein #1, MedDir - Shaya Lerner #1, MedDir - Yona Abraham #1, MedDir - Yosef Levenbrown #1, Meira Simanowitz #1, Michael #1, Michael #2, Miriam Hirsch #1, Miriam Jacoby #1, Racheli Meister #1, Rivkah Horowitz #1, Sara Rochel Barrer #1, Spare 3 #1, Spare 4 #1]
+    16:36:03.556 ERROR r.tests.ContactMessagingAuditTests - Contacts that could not be audited: [Tango #1, Test group CH #1]
+    16:36:03.556 INFO  r.tests.ContactMessagingAuditTests - ========================================
+
+Gradle suite > Gradle test > ringotel.tests.ContactMessagingAuditTests > checkMessagingAvailabilityForAllContacts FAILED
+    java.lang.AssertionError: Some contacts could not be opened: [Tango #1, Test group CH #1] expected [0] but found [2]
+        at org.testng.Assert.fail(Assert.java:111)
+        at org.testng.Assert.failNotEquals(Assert.java:1590)
+        at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+        at org.testng.Assert.assertEquals(Assert.java:132)
+        at org.testng.Assert.assertEquals(Assert.java:1431)
+        at org.testng.Assert.assertEquals(Assert.java:1395)
+        at ringotel.tests.ContactMessagingAuditTests.checkMessagingAvailabilityForAllContacts(ContactMessagingAuditTests.java:277)
+
+Gradle suite > Gradle test > ringotel.tests.ContactMessagingAuditTests STANDARD_OUT
+    16:36:03.653 ERROR r.tests.ContactMessagingAuditTests - FAILED: checkMessagingAvailabilityForAllContacts. Screenshot -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001363652.png
+    16:36:03.823 INFO  r.tests.ContactMessagingAuditTests - Stop test
+    16:36:03.823 INFO  r.tests.ContactMessagingAuditTests - ******************************
+
+Gradle suite > Gradle test > ringotel.tests.ContactTests STANDARD_OUT
+    16:36:03.825 INFO  ringotel.tests.ContactTests - Start test createContactPositiveTest with data: []
+
+Gradle suite > Gradle test > ringotel.tests.ContactTests STANDARD_ERROR
+    Sep 21, 2026 4:36:04 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:36:04 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.ContactTests STANDARD_OUT
+    16:36:09.690 INFO  ringotel.tests.ContactTests - Logging in 4321
+    16:36:13.042 INFO  ringotel.tests.ContactTests - 4321 logged in successfully
+
+Gradle suite > Gradle test > ringotel.tests.ContactTests > createContactPositiveTest STANDARD_OUT
+    16:36:13.043 INFO  ringotel.tests.ContactTests - Creating contact: AutoTest 1790001373043
+    16:36:13.043 INFO  ringotel.tests.ContactTests - Contact phone: +12021373043
+    16:36:13.043 INFO  ringotel.tests.ContactTests - Contact email: autotest1790001373043@example.com
+    16:36:14.641 INFO  ringotel.tests.ContactTests - Create Contact button clicked
+    16:36:14.642 INFO  ringotel.tests.ContactTests - Contact created: AutoTest 1790001373043
+    16:36:14.711 INFO  ringotel.tests.ContactTests - Contact creation evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001374710.png
+    16:36:14.711 INFO  ringotel.tests.ContactTests - Searching for created contact: AutoTest 1790001373043
+    16:36:15.571 INFO  ringotel.tests.ContactTests - Contact found in search: AutoTest 1790001373043
+    16:36:15.664 INFO  ringotel.tests.ContactTests - Contact search evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001375664.png
+    16:36:15.665 INFO  ringotel.tests.ContactTests - Clicking found contact: AutoTest 1790001373043
+    16:36:16.225 INFO  ringotel.tests.ContactTests - Contact opened: AutoTest 1790001373043
+    16:36:16.292 INFO  ringotel.tests.ContactTests - Opened contact evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001376291.png
+    16:36:16.292 INFO  ringotel.tests.ContactTests - Opening actions menu for contact: AutoTest 1790001373043
+    16:36:16.329 INFO  ringotel.tests.ContactTests - Contact actions menu opened
+    16:36:16.329 INFO  ringotel.tests.ContactTests - Clicking Delete Contact
+    16:36:16.882 INFO  ringotel.tests.ContactTests - Delete Contact button clicked
+    16:36:16.882 INFO  ringotel.tests.ContactTests - Delete confirmation dialog is visible
+    16:36:16.949 INFO  ringotel.tests.ContactTests - Delete confirmation evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001376949.png
+    16:36:16.949 INFO  ringotel.tests.ContactTests - Confirming deletion of contact: AutoTest 1790001373043
+    16:36:16.983 INFO  ringotel.tests.ContactTests - Delete confirmation button clicked
+    16:36:16.983 INFO  ringotel.tests.ContactTests - Contact deletion submitted: AutoTest 1790001373043
+    16:36:16.983 INFO  ringotel.tests.ContactTests - Searching for deleted contact: AutoTest 1790001373043
+    16:36:22.962 INFO  ringotel.tests.ContactTests - Deleted contact was not found in search: AutoTest 1790001373043
+    16:36:23.018 INFO  ringotel.tests.ContactTests - Contact deletion evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001383018.png
+    16:36:23.019 INFO  ringotel.tests.ContactTests - Contact create, search and delete scenario completed successfully for AutoTest 1790001373043
+
+Gradle suite > Gradle test > ringotel.tests.ContactTests > createContactPositiveTest PASSED
+
+Gradle suite > Gradle test > ringotel.tests.ContactTests STANDARD_OUT
+    16:36:23.019 INFO  ringotel.tests.ContactTests - PASSED: createContactPositiveTest
+    16:36:23.198 INFO  ringotel.tests.ContactTests - Stop test
+    16:36:23.198 INFO  ringotel.tests.ContactTests - ******************************
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests STANDARD_OUT
+    16:36:23.203 INFO  ringotel.tests.LoginTests - Start test loginPositiveTest with data: [User{domain='testwebsoftphone', username='4321'}]
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests STANDARD_ERROR
+    Sep 21, 2026 4:36:23 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:36:23 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests > loginPositiveTest[0](User{domain='testwebsoftphone', username='4321'}) STANDARD_OUT
+    16:36:24.020 INFO  ringotel.tests.LoginTests - Starting login test for 4321
+    16:36:24.021 INFO  ringotel.tests.LoginTests - Entering domain testwebsoftphone
+    16:36:26.177 INFO  ringotel.tests.LoginTests - Domain submitted successfully
+    16:36:26.177 INFO  ringotel.tests.LoginTests - Entering credentials for 4321
+    16:36:26.272 INFO  ringotel.tests.LoginTests - Credentials entered for 4321
+    16:36:26.273 INFO  ringotel.tests.LoginTests - Clicking Log in button
+    16:36:27.331 INFO  ringotel.tests.LoginTests - Login completed for 4321
+    16:36:27.408 INFO  ringotel.tests.LoginTests - Login evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001387407.png
+    16:36:27.408 INFO  ringotel.tests.LoginTests - Login scenario completed successfully for 4321
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests > loginPositiveTest[0](User{domain='testwebsoftphone', username='4321'}) PASSED
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests STANDARD_OUT
+    16:36:27.409 INFO  ringotel.tests.LoginTests - PASSED: loginPositiveTest
+    16:36:27.590 INFO  ringotel.tests.LoginTests - Stop test
+    16:36:27.590 INFO  ringotel.tests.LoginTests - ******************************
+    16:36:27.591 INFO  ringotel.tests.LoginTests - Start test loginPositiveTest with data: [User{domain='testwebsoftphone', username='1234'}]
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests STANDARD_ERROR
+    Sep 21, 2026 4:36:28 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:36:28 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests > loginPositiveTest[1](User{domain='testwebsoftphone', username='1234'}) STANDARD_OUT
+    16:36:28.499 INFO  ringotel.tests.LoginTests - Starting login test for 1234
+    16:36:28.499 INFO  ringotel.tests.LoginTests - Entering domain testwebsoftphone
+    16:36:30.676 INFO  ringotel.tests.LoginTests - Domain submitted successfully
+    16:36:30.676 INFO  ringotel.tests.LoginTests - Entering credentials for 1234
+    16:36:30.777 INFO  ringotel.tests.LoginTests - Credentials entered for 1234
+    16:36:30.777 INFO  ringotel.tests.LoginTests - Clicking Log in button
+    16:36:31.858 INFO  ringotel.tests.LoginTests - Login completed for 1234
+    16:36:31.981 INFO  ringotel.tests.LoginTests - Login evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001391980.png
+    16:36:31.981 INFO  ringotel.tests.LoginTests - Login scenario completed successfully for 1234
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests > loginPositiveTest[1](User{domain='testwebsoftphone', username='1234'}) PASSED
+
+Gradle suite > Gradle test > ringotel.tests.LoginTests STANDARD_OUT
+    16:36:31.982 INFO  ringotel.tests.LoginTests - PASSED: loginPositiveTest
+    16:36:32.170 INFO  ringotel.tests.LoginTests - Stop test
+    16:36:32.170 INFO  ringotel.tests.LoginTests - ******************************
+
+Gradle suite > Gradle test > ringotel.tests.PresenceTests STANDARD_OUT
+    16:36:32.171 INFO  ringotel.tests.PresenceTests - Start test changePresenceStatuses with data: []
+
+Gradle suite > Gradle test > ringotel.tests.PresenceTests STANDARD_ERROR
+    Sep 21, 2026 4:36:32 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:36:32 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.PresenceTests > changePresenceStatuses STANDARD_OUT
+    16:36:32.979 INFO  ringotel.tests.PresenceTests - Logging in 4321
+    16:36:36.344 INFO  ringotel.tests.PresenceTests - 4321 logged in successfully
+    16:36:36.344 INFO  ringotel.tests.PresenceTests - 4321: clicking Busy
+    16:36:36.601 INFO  ringotel.tests.PresenceTests - 4321: Busy status confirmed
+    16:36:36.710 INFO  ringotel.tests.PresenceTests - Busy evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001396709.png
+    16:36:38.222 INFO  ringotel.tests.PresenceTests - 4321: clicking At Desk
+    16:36:38.311 INFO  ringotel.tests.PresenceTests - 4321: At Desk status confirmed
+    16:36:38.370 INFO  ringotel.tests.PresenceTests - At Desk evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001398370.png
+    16:36:39.886 INFO  ringotel.tests.PresenceTests - 4321: clicking Online
+    16:36:39.973 INFO  ringotel.tests.PresenceTests - 4321: Online status confirmed
+    16:36:40.027 INFO  ringotel.tests.PresenceTests - Online evidence -> J:\javaAIT\RingoAutoTest\screenshots\screen-1790001400026.png
+    16:36:41.535 INFO  ringotel.tests.PresenceTests - Presence scenario completed successfully for 4321
+
+Gradle suite > Gradle test > ringotel.tests.PresenceTests > changePresenceStatuses PASSED
+
+Gradle suite > Gradle test > ringotel.tests.PresenceTests STANDARD_OUT
+    16:36:41.536 INFO  ringotel.tests.PresenceTests - PASSED: changePresenceStatuses
+    16:36:41.710 INFO  ringotel.tests.PresenceTests - Stop test
+    16:36:41.710 INFO  ringotel.tests.PresenceTests - ******************************
+
+11 tests completed, 3 failed
+
+> Task :test FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///J:/javaAIT/RingoAutoTest/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 5m 25s
+5 actionable tasks: 5 executed

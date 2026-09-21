@@ -8,6 +8,8 @@ public class Contact {
     private String phone;
     private String email;
     private String notes;
+    private int occurrence = 1;
+    private boolean hasPhoneNumber;
 
     public String getFullName() {
         return fullName;
@@ -60,6 +62,24 @@ public class Contact {
 
     public Contact setNotes(String notes) {
         this.notes = notes;
+        return this;
+    }
+
+    public int getOccurrence() {
+        return occurrence;
+    }
+
+    public Contact setOccurrence(int occurrence) {
+        this.occurrence = occurrence;
+        return this;
+    }
+
+    public boolean hasPhoneNumber() {
+        return hasPhoneNumber;
+    }
+
+    public Contact setHasPhoneNumber(boolean hasPhoneNumber) {
+        this.hasPhoneNumber = hasPhoneNumber;
         return this;
     }
 }

@@ -1,0 +1,12 @@
+{
+  "startedAt": "2026-09-21T18:05:54.893862",
+  "domain": "testwebsoftphone",
+  "users": [
+    {"index": 1, "extension": "4321"}
+  ],
+  "browsers": ["edge"],
+  "tests": ["ringotel.tests.LoginTests"],
+  "chat": {"enabled": false},
+  "realCallEnabled": false,
+  "realSmsEnabled": false
+}

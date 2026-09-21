@@ -1,0 +1,121 @@
+> Task :clean
+> Task :compileJava
+> Task :processResources NO-SOURCE
+> Task :classes
+> Task :compileTestJava
+> Task :processTestResources
+> Task :testClasses
+
+> Task :test
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests STANDARD_ERROR
+    Sep 21, 2026 4:49:59 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:49:59 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Sep 21, 2026 4:50:00 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:50:00 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests > answerCallAndCheckCallControls STANDARD_OUT
+    16:50:00.619 INFO  ringotel.tests.CallControlsTests - Logging in caller 4321
+    16:50:03.518 INFO  ringotel.tests.CallControlsTests - Waiting for caller 4321 client readiness
+    16:50:03.539 INFO  ringotel.tests.CallControlsTests - Caller 4321 client is ready
+    16:50:03.539 INFO  ringotel.tests.CallControlsTests - Logging in callee 1234
+    16:50:06.388 INFO  ringotel.tests.CallControlsTests - Waiting for callee 1234 client readiness
+    16:50:06.421 INFO  ringotel.tests.CallControlsTests - Callee 1234 client is ready
+    16:50:06.422 INFO  ringotel.tests.CallControlsTests - 4321 calls 1234
+    16:50:08.796 INFO  ringotel.tests.CallControlsTests - Outgoing call detected for 4321
+    16:50:09.836 INFO  ringotel.tests.CallControlsTests - Incoming call detected for 1234
+    16:50:09.847 INFO  ringotel.tests.CallControlsTests - 1234 answers the call
+    16:50:12.818 INFO  ringotel.tests.CallControlsTests - Call is active for 4321 and 1234
+    16:50:12.818 INFO  ringotel.tests.CallControlsTests - Checking Separate Window button
+    16:50:12.828 INFO  ringotel.tests.CallControlsTests - Checking Hold
+    16:50:13.419 INFO  ringotel.tests.CallControlsTests - Call is on hold
+    16:50:14.925 INFO  ringotel.tests.CallControlsTests - Checking Resume
+    16:50:15.493 INFO  ringotel.tests.CallControlsTests - Call resumed successfully
+    16:50:16.498 INFO  ringotel.tests.CallControlsTests - Checking Mute
+    16:50:16.547 INFO  ringotel.tests.CallControlsTests - Call is muted
+    16:50:18.059 INFO  ringotel.tests.CallControlsTests - Checking Unmute
+    16:50:18.102 INFO  ringotel.tests.CallControlsTests - Call was unmuted successfully
+    16:50:19.106 INFO  ringotel.tests.CallControlsTests - Checking Record
+    16:50:19.663 INFO  ringotel.tests.CallControlsTests - Recording started
+    16:50:21.164 INFO  ringotel.tests.CallControlsTests - Checking Stop Recording
+    16:50:21.717 INFO  ringotel.tests.CallControlsTests - Recording stopped successfully
+    16:50:22.720 INFO  ringotel.tests.CallControlsTests - Opening More call actions
+    16:50:22.814 INFO  ringotel.tests.CallControlsTests - More call actions are available
+    16:50:22.858 INFO  ringotel.tests.CallControlsTests - Opening Call Transfer
+    16:50:23.438 INFO  ringotel.tests.CallControlsTests - Selecting first available transfer destination
+    16:50:23.541 INFO  ringotel.tests.CallControlsTests - Transfer destination selected successfully
+    16:50:23.580 INFO  ringotel.tests.CallControlsTests - Ending call
+    16:50:25.176 INFO  ringotel.tests.CallControlsTests - Call controls scenario completed successfully
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests > answerCallAndCheckCallControls PASSED
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests STANDARD_ERROR
+    Sep 21, 2026 4:50:25 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:50:25 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Sep 21, 2026 4:50:26 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:50:26 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests > rejectIncomingCall STANDARD_OUT
+    16:50:27.118 INFO  ringotel.tests.CallControlsTests - Logging in caller 4321
+    16:50:29.998 INFO  ringotel.tests.CallControlsTests - Waiting for caller 4321 client readiness
+    16:50:30.012 INFO  ringotel.tests.CallControlsTests - Caller 4321 client is ready
+    16:50:30.013 INFO  ringotel.tests.CallControlsTests - Logging in callee 1234
+    16:50:32.845 INFO  ringotel.tests.CallControlsTests - Waiting for callee 1234 client readiness
+    16:50:32.890 INFO  ringotel.tests.CallControlsTests - Callee 1234 client is ready
+    16:50:32.890 INFO  ringotel.tests.CallControlsTests - 4321 calls 1234
+    16:50:36.305 INFO  ringotel.tests.CallControlsTests - 1234 rejects the call
+    16:50:36.358 INFO  ringotel.tests.CallControlsTests - Incoming call was rejected by 1234
+    16:50:39.381 INFO  ringotel.tests.CallControlsTests - Call remains visible for 4321 after Reject
+    16:50:39.381 INFO  ringotel.tests.CallControlsTests - Ending remaining caller call
+    16:50:39.435 INFO  ringotel.tests.CallControlsTests - Reject incoming call scenario completed successfully
+
+Gradle suite > Gradle test > ringotel.tests.CallControlsTests > rejectIncomingCall PASSED
+
+Gradle suite > Gradle test > ringotel.tests.CallTests STANDARD_ERROR
+    Sep 21, 2026 4:50:40 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:50:40 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+    Sep 21, 2026 4:50:41 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    WARNING: Unable to find CDP implementation matching 153
+    Sep 21, 2026 4:50:41 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$4
+    WARNING: Unable to find version of CDP to use for 153.0.8010.48. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.40.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+Gradle suite > Gradle test > ringotel.tests.CallTests > twoWayInternalCall STANDARD_OUT
+    16:50:41.510 INFO  ringotel.tests.CallTests - Logging in user 1: 4321
+    16:50:44.378 INFO  ringotel.tests.CallTests - Waiting for 4321 client to become ready
+    16:50:44.392 INFO  ringotel.tests.CallTests - 4321 client is ready
+    16:50:44.392 INFO  ringotel.tests.CallTests - Logging in user 2: 1234
+    16:50:47.229 INFO  ringotel.tests.CallTests - Waiting for 1234 client to become ready
+    16:50:47.255 INFO  ringotel.tests.CallTests - 1234 client is ready
+    16:50:47.287 INFO  ringotel.tests.CallTests - 4321 calls 1234
+    16:50:49.675 INFO  ringotel.tests.CallTests - Outgoing call detected for 4321
+    16:50:50.714 INFO  ringotel.tests.CallTests - Incoming call detected for 1234
+    16:50:50.722 INFO  ringotel.tests.CallTests - 1234 answers the call
+    16:50:53.765 INFO  ringotel.tests.CallTests - Call between 4321 and 1234 is active
+    16:51:08.779 INFO  ringotel.tests.CallTests - 4321 ends the call
+    16:51:10.368 INFO  ringotel.tests.CallTests - Call completed successfully: 4321 -> 1234
+    16:51:10.368 INFO  ringotel.tests.CallTests - Waiting for both clients to return to idle state
+    16:51:10.391 INFO  ringotel.tests.CallTests - Both clients are ready for reverse call
+    16:51:11.918 INFO  ringotel.tests.CallTests - 1234 calls 4321
+    16:51:12.185 INFO  ringotel.tests.CallTests - Outgoing call detected for 1234
+    16:51:13.225 INFO  ringotel.tests.CallTests - Incoming call detected for 4321
+    16:51:13.235 INFO  ringotel.tests.CallTests - 4321 answers the call
+    16:51:14.344 INFO  ringotel.tests.CallTests - Call between 1234 and 4321 is active
+    16:51:29.356 INFO  ringotel.tests.CallTests - 1234 ends the call
+    16:51:30.955 INFO  ringotel.tests.CallTests - Call completed successfully: 1234 -> 4321
+    16:51:30.956 INFO  ringotel.tests.CallTests - Two-way internal call scenario completed successfully
+
+Gradle suite > Gradle test > ringotel.tests.CallTests > twoWayInternalCall PASSED
+
+BUILD SUCCESSFUL in 1m 35s
+5 actionable tasks: 5 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.3.0/userguide/configuration_cache_enabling.html
